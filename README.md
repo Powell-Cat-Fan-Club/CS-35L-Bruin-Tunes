@@ -12,10 +12,18 @@ Our motivation for this project is to create a platform for UCLA students to sha
 - Tiffany Hwang (1D)
 - Daniel Zhu (1D) 
 - Brandon Tran (1E)
-### Notes for Committing (Team Members Only) ###
-Please make a new branch every time you want to make a change. Make sure to pull from main if someone makes a change to main to make sure your branch is compatible. Finally, make a pull request and ask another team member to approve the change (I may turn that off, but for now, I'll leave it). 
+### Notes for Team Members ###
+## Getting Started ##
+Clone the repository using `git clone {url of repository}` to the terminal of your choice (VS Code is what I use, but you can use whatever you want). Once you have done this, `cd` into the new folder and type in `npm install`. This installs the dependencies of the project (outlined in package.json). Finally, type `npm start` to run the project in your browser. Let me know if you have trouble with the above steps.
+## Advice ##
+When in doubt, follow what the TAs said in discussion. This is:
+- Write good commit messages.
+- Make a branch every time you want to modify something in `main`. Make sure that you are in your branch and not in the `main` branch!
+- Make a branch every time you switch tasks (i.e. if you're working on a css file but want to switch to working on ranking, make a new branch with your name and the function. 
+- You can create `pull` requests in order to 
+- Use `.gitignore` for node_modules (note for self). 
+- When in doubt, look to the internet (or the advice of the TAs!). Ask the Discord for help. 
 
-## From React ##
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
