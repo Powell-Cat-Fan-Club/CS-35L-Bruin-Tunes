@@ -1,11 +1,5 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
-<<<<<<< HEAD
-const List = () => {
-  return (
-    <div>
-      <h1>List time!</h1>
-=======
 import { getArtists } from "./artist-data";
 const List = () => {
 
@@ -28,7 +22,6 @@ const List = () => {
     <div>
       <h1>Albums as ranked by UCLA students</h1>
       {displayRanking()}
->>>>>>> 24b551b29e109dde986996916b16108b2a05be95
     </div>
   );
 };

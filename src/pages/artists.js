@@ -22,10 +22,7 @@ const Artists = () => {
           }}
         >
           <input
-<<<<<<< HEAD
-=======
             placeholder="Filter by name"
->>>>>>> 24b551b29e109dde986996916b16108b2a05be95
             value={searchParams.get("filter")  || ""}
             onChange={(event) => {
               let filter = event.target.value;
@@ -36,14 +33,6 @@ const Artists = () => {
                 setSearchParams({});
               }
             }}/>
-<<<<<<< HEAD
-          {artists
-          .filter((artist) => {
-            let filter = searchParams.get("filter");
-            if (!filter) return true;
-            let name = artist.name.toLowerCase();
-            return name.startsWith(filter.toLowerCase());
-=======
             <input
             placeholder="Filter by attributes"
             value={searchParams.get("filterAttr")  || ""}
@@ -81,7 +70,6 @@ const Artists = () => {
             if (!filter) return matches.length!==0;
             if (!filterAttr) return name.startsWith(filter.toLowerCase());
             return false;
->>>>>>> 24b551b29e109dde986996916b16108b2a05be95
           })
           .map((artist) => (
             <QueryNavLink
@@ -106,10 +94,6 @@ const Artists = () => {
   );
 };
   
-<<<<<<< HEAD
-export default Artists;
-=======
 
 export default Artists;
 
->>>>>>> 24b551b29e109dde986996916b16108b2a05be95
