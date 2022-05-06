@@ -10,6 +10,7 @@ import Comments from './pages/comments';
 import Contact from './pages/contact';
 import List from './pages/list';
 import ArtistTemplate from './pages/artist-template';
+import Albums from './pages/albums';
   
 function App() {
 return (
@@ -21,6 +22,7 @@ return (
         <Route path='contact' element={<Contact/>} />
         <Route path='artists' element={<Artists/>} >
             <Route path=':artistID' element={<ArtistTemplate/>} />
+            <Route path=':artistID/:albumID' element={<Albums/>}/>
         </Route>
         <Route path='comments' element={<Comments/>} />
         <Route path='list' element={<List/>} />
