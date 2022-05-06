@@ -22,6 +22,7 @@ const Artists = () => {
           }}
         >
           <input
+            placeholder="Filter by name"
             value={searchParams.get("filter")  || ""}
             onChange={(event) => {
               let filter = event.target.value;
@@ -32,12 +33,43 @@ const Artists = () => {
                 setSearchParams({});
               }
             }}/>
+            <input
+            placeholder="Filter by attributes"
+            value={searchParams.get("filterAttr")  || ""}
+            onChange={(event) => {
+              let filterAttr = event.target.value;
+              if (filterAttr) {
+                setSearchParams( { filterAttr });
+              }
+              else {
+                setSearchParams({});
+              }
+            }}/>
           {artists
           .filter((artist) => {
             let filter = searchParams.get("filter");
-            if (!filter) return true;
+            let filterAttr = searchParams.get("filterAttr")
+            let matches = [];
+            if (!filter & !filterAttr) return true;
             let name = artist.name.toLowerCase();
-            return name.startsWith(filter.toLowerCase());
+            let attr = artist.attributes;
+            for (let i = 0; i<attr.length; i++)
+            {
+              attr[i] = attr[i].toLowerCase();
+            }
+            if (filterAttr)
+            {
+              for (let i = 0; i<attr.length; i++)
+              {
+                if (attr[i].startsWith(filterAttr.toLowerCase())) matches.push(attr[i]);
+              }
+            }
+            console.log(matches);
+            if (filter & filterAttr) return name.startsWith(filter.toLowerCase()) | matches.length!==0;
+            console.log(matches.length!==0);
+            if (!filter) return matches.length!==0;
+            if (!filterAttr) return name.startsWith(filter.toLowerCase());
+            return false;
           })
           .map((artist) => (
             <QueryNavLink
