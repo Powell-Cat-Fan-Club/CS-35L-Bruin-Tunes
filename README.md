@@ -24,7 +24,7 @@ Our motivation for this project is to create a platform for UCLA students to sha
 2. Open up VS Code (or the editor/terminal of your choice). Open a terminal. Type `git clone {url of repository}` to the terminal of your choice (VS Code is what I use, but you can use whatever you want). In VS code, you can also use `ctrl-shift-p` and type in git clone, and an option to do so should come up. 
 3. Once you have done this, `cd` into the new folder and type in `npm install`. This installs the dependencies of the project (outlined in package.json). 
 4. (Potentially optional, but just in case, do this step anyways) `Cd` to the directory `backend`. Type `npm install` to install the dependencies for the backend. 
-5. Add a file called config.env to the `backend` folder. Follow the format of `.env.sample` but replace <username> with the username for MongoDB and <password> with the password for MongoDB (look at the Discord for details).
+5. Add a file called config.env to the `backend` folder. Follow the format of `.env.sample` but replace \<username\> with the username for MongoDB and \<password\> with the password for MongoDB (look at the Discord for details).
 6. Type `node server.js` to start runnning the server and database. If done successfully, you should see the following:
 
       > Server is running on port: 5000
