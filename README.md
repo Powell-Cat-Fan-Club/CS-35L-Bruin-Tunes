@@ -23,12 +23,19 @@ Our motivation for this project is to create a platform for UCLA students to sha
 1. Navigate to the repository page and press the green `Code` button. Copy the url HTTP request thing.
 2. Open up VS Code (or the editor/terminal of your choice). Open a terminal. Type `git clone {url of repository}` to the terminal of your choice (VS Code is what I use, but you can use whatever you want). In VS code, you can also use `ctrl-shift-p` and type in git clone, and an option to do so should come up. 
 3. Once you have done this, `cd` into the new folder and type in `npm install`. This installs the dependencies of the project (outlined in package.json). 
-4. Finally, type `npm start` to run the project in your browser. 
+4. (Potentially optional, but just in case, do this step anyways) `Cd` to the directory `backend`. Type `npm install` to install the dependencies for the backend. 
+5. Add a file called config.env to the `backend` folder. Follow the format of `.env.sample` but replace \<username\> with the username for MongoDB and \<password\> with the password for MongoDB (look at the Discord for details).
+6. Type `node server.js` to start runnning the server and database. If done successfully, you should see the following:
+
+      > Server is running on port: 5000
+      > 
+      > Successfully connected to MongoDB.
+7. Finally, type `npm start` to run the project in your browser. 
 Let me (Laura) know if you have trouble with the above steps.
 
 ## Branches ##
 
-Please refer to the [following link](https://docs.gpcrdb.org/git_workflow.html) for a full tutorial on branches. The following documentation is under construction and may not be completely accurate. When in doubt, refer to the Internet, or ask the Discord. You may need to do some [setup](https://github.com/protwis/protwis_vagrant#instructions) before you follow the below code. 
+Please refer to the [following link](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github) for a full tutorial on branches and pull requests. The following documentation is under construction and may not be completely accurate. When in doubt, refer to the Internet, or ask the Discord.
 
 ### Terminal ###
 
@@ -36,10 +43,8 @@ Please refer to the [following link](https://docs.gpcrdb.org/git_workflow.html) 
 2. You can check that you are in the proper branch with the command `git branch`.
 3. Once you have made changes in your terminal, you can add your files to the branch with the command `git add <filename>`. You can also type `git add --all`, which will add all modified or new files. 
 4. Commit your changes by typing in `git commit -m "<message>"`. Make sure to add a descriptive commit message!
-5. See `Keeping Up to Date` before you merge with `main` and execute the following instructions!
-6. Merge your branch with `main` with the following commands: `git checkout master` and `git merge my_feature_branch`.
-7. Push them to your fork on GitHub with the following command: `git push origin master`. 
-8. Once you have done this, go to the repository's website on GitHub and create a pull request and create a pull request.
+5. Push yor changes to your fork on GitHub with the following command: `git push --set-upstream origin <branchname>`. 
+6. Once you have done this, go to the repository's website on GitHub and create a pull request.
 
 ### GitHub ###
 
@@ -50,10 +55,9 @@ You can do all of the above directly in Github, too! Just follow the instruction
 4. Ask a teammate to push your pull request! (You can do it yourself, but we should have two eyes on any pull requests, just to be sure we don't break anything).
 5. Now you've merged your branch with `main`. Be sure to delete your branch afterwards!  
 
-### Keeping Up to Date (Do this often!) ###
-1. (In the terminal) After you've committed all your changes to `main`, type `git checkout main` and `git pull upstream main` to fetch the latest changes. 
-2. Update your feature branch by typing the following commands: `git checkout my_feature_branch` and `git rebase main`. 
-3. If the rebase does not go through, Git may need you to manage any merge conflicts that might arise. **Be sure to preserve others' code as much as possible.** If this happens, open the conflicted file in a text editor. Conflicts are displayed as two versions of the conflicted code block, one marked “HEAD”, and one marked “master”. There may be more than one conflict in the same file. Edit the file manually to resolve the conflict(s). Then add the file to the index, and continue the rebase with the following two commands: `git add path/to/file` and `git rebase --continue`. If new conflicts arise, keep on resolving the conflicts until you can be up to date with `main`. 
+### Keeping Up to Date (Pulling from GitHub) ###
+
+1. In your terminal, type `git pull` to pull from the remote repository to your local repository. This fetches the changes and merges them with your local repository. Be sure to read up on the documentation [here](https://www.atlassian.com/git/tutorials/syncing/git-pull).
 
 ## Advice ##
 
@@ -62,6 +66,10 @@ Some good advice is:
 - Make a branch every time you want to modify something in `main`. Make sure that you are in your branch and not in the `main` branch!
 - Make a branch every time you switch tasks (i.e. if you're working on a css file but want to switch to working on ranking, make a new branch with your name and the functionality that you are working on). 
 - When in doubt, look to the internet (or the advice of the TAs!). Ask the **Discord** for help.  
+
+## Requirements ##
+
+- Each team member needs at least **five** commits of substance. What substance means is up to the TAs, but as long as you're actually doing your part and contributing, you should be able to get your commits in. 
 
 # Getting Started with Create React App
 
