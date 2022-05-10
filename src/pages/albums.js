@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import { getAlbum } from './artist-data';
+import { getAlbum, getArtist } from './artist-data';
 
 
 const Albums = () => {
     let params = useParams();
+    let artist = getArtist(params.artistID);
     let album = getAlbum(params.artistID, params.albumID);
     return (
         <div style={{ display: "flex" }}>
@@ -18,9 +19,19 @@ const Albums = () => {
             Release date: {album.date}
           </p>
           <p>Info: {album.info}</p>
+          <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
+        {(album.songs).map((song) => (
+            <NavLink
+              style={{ display: "block", margin: "1rem 0" }}
+              to={`/artists/${artist.name}/${album.name}/${song.name}`}
+              key={song.name}
+            >
+              {song.name}
+            </NavLink>
+          ))}
         </nav>
-        <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
-        </div>
+        <Outlet />
+      </div>
     )
 
 }
