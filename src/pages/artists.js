@@ -34,7 +34,7 @@ const Artists = () => {
               }
             }}/>
             <input
-            placeholder="Filter by attributes"
+            placeholder="Filter by genres"
             value={searchParams.get("filterAttr")  || ""}
             onChange={(event) => {
               let filterAttr = event.target.value;
@@ -52,7 +52,7 @@ const Artists = () => {
             let matches = [];
             if (!filter & !filterAttr) return true;
             let name = artist.name.toLowerCase();
-            let attr = artist.attributes;
+            let attr = artist.genres;
             for (let i = 0; i<attr.length; i++)
             {
               attr[i] = attr[i].toLowerCase();

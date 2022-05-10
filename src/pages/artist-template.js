@@ -17,6 +17,11 @@ export default function ArtistTemplate(){
             Ranking: {artist.ranking}
           </p>
           <p>Number of albums: {artist.numalbums}</p>
+          <p>Genres: </p>
+          <ul>
+            {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
+          </ul>
+          
         </nav>
         <nav
           style={{
