@@ -5,6 +5,14 @@ const Comments = () => {
   return (
     <div>
       <h1>Comments</h1>
+      <form>
+        Enter your username here: <br></br><input type="text" name="username"></input>
+        <br></br><br></br>
+        Enter your comment here: <br></br><textarea type="text" name="comment" rows="5" cols="40"></textarea>
+        <br></br><br></br>
+        <button type="button">Submit</button>
+        </form>
+
     </div>
   );
 };

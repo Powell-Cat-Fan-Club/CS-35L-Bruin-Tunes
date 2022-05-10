@@ -1,8 +1,8 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from "react";
 import { Nav, NavLink, NavMenu } 
-    from "./NavbarElements";
-  
+    from "./NavbarElements"; 
+
 const Navbar = () => {
   return (
     <>
@@ -10,9 +10,6 @@ const Navbar = () => {
         <NavMenu>
           <NavLink to="/" activeStyle>
             Home
-          </NavLink>
-          <NavLink to="/about" activeStyle>
-            About
           </NavLink>
           <NavLink to="/artists" activeStyle>
             Artist pages
@@ -23,8 +20,8 @@ const Navbar = () => {
           <NavLink to="/list" activeStyle>
             Ranking
           </NavLink>
-          <NavLink to="/contact" activeStyle>
-            Contact us!
+          <NavLink to="/about" activeStyle>
+            About us!
           </NavLink>
         </NavMenu>
       </Nav>
