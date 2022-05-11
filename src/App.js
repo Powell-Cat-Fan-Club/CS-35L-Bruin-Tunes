@@ -10,7 +10,8 @@ import About from './pages/about';
 import List from './pages/list';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';
-import Login from './pages/login';
+import Login from './pages/pagesLOGIN/login';
+import SignUp from './pages/pagesLOGIN/signup';
 import Songs from './pages/songs';
   
 function App() {
@@ -28,6 +29,7 @@ return (
         <Route path='comments' element={<Comments/>} />
         <Route path='list' element={<List/>} />
         <Route path='login' element={<Login/>} />
+        <Route path='register' element={<SignUp/>} />
         <Route
           path="*"
           element={
