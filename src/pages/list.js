@@ -2,38 +2,39 @@
 import React from 'react';
 import { getArtists } from "./artist-data";
 import { useState } from 'react';
-import {useSearchParams, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 
 
 const List = () => {
 
   //Get artists
   let artists = getArtists();
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [userSearch, setUserSearch] = useState('');
+  let [filteredResults, setFilteredResults] = useState([]);
+  let filteredSorted = [];
 
   //Sort artists by ranking
-  let toSort = [].concat(artists);
-  toSort.sort((a,b) => a.ranking - b.ranking);
-  
+  let sortedArtists = [].concat(artists);
+  sortedArtists.sort((a,b) => a.ranking - b.ranking);
   
   //Function to display the list
   let displayRanking = () => {
     return (
     <div>
-      <input placeholder="Filter by genre"
-      value={searchParams.get("filterAttr")  || ""}
-      onChange={(event) => {
-        let filterAttr = event.target.value;
-        if (filterAttr) {
-          setSearchParams( { filterAttr });
-        }
-        else {
-          setSearchParams({});
-        }
-      }}/>
+
+      {/* Filtering block */}
+      <input placeholder='Search by genre' onChange={(e) => setUserSearch(e.target.value)} />
         <ol>
           <nav>
-          {toSort.map((artist) => 
+          {sortedArtists.filter((val) => {
+            if (userSearch == "") {
+              return val;
+            }
+            else if (val.genres.includes(userSearch.toLowerCase())) {
+              return val;
+          }
+        }
+          ).map((artist) => 
             <li>
               <Link to={'/artists/' + artist.name}>{artist.name}</Link>
               <p>{'Ranking number: ' + artist.ranking}<br/>
