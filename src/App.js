@@ -11,7 +11,7 @@ import List from './pages/list';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';
 import Login from './pages/login';
-
+import Songs from './pages/songs';
   
 function App() {
 return (
@@ -23,6 +23,7 @@ return (
         <Route path='artists' element={<Artists/>} >
             <Route path=':artistID' element={<ArtistTemplate/>} />
             <Route path=':artistID/:albumID' element={<Albums/>}/>
+            <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
         <Route path='comments' element={<Comments/>} />
         <Route path='list' element={<List/>} />

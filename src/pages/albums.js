@@ -1,16 +1,21 @@
+/* albums: individual album pages (under specific artist)
+shows name of album, release date, extra info, and links to songs
+*/ 
+
 import React from 'react';
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import { getAlbum } from './artist-data';
+import { getAlbum, getArtist } from './artist-data';
 
 
 const Albums = () => {
     let params = useParams();
+    let artist = getArtist(params.artistID);
     let album = getAlbum(params.artistID, params.albumID);
     return (
         <div style={{ display: "flex" }}>
           <nav
           style={{
-            justifyContent: "center",
+            padding:"2rem",
           }}
         >
           <h2>Album name: {album.name}</h2>
@@ -18,9 +23,24 @@ const Albums = () => {
             Release date: {album.date}
           </p>
           <p>Info: {album.info}</p>
+          </nav>
+          <nav style={{
+            padding:"2rem",
+            borderLeft: "solid 1px"
+          }}>
+          <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
+        {(album.songs).map((song) => (
+            <NavLink
+              style={{ display: "block", margin: "1rem 0" }}
+              to={`/artists/${artist.name}/${album.name}/${song.name}`}
+              key={song.name}
+            >
+              {song.name}
+            </NavLink>
+          ))}
         </nav>
-        <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
-        </div>
+        <Outlet />
+      </div>
     )
 
 }
