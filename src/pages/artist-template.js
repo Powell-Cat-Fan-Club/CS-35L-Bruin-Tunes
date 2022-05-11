@@ -1,6 +1,12 @@
+/* artist-template: individual artist pages
+shows name of artist, number of albums, genres, and links to albums
+*/ 
+
 import React from "react";
 import { getArtist } from "./artist-data";
 import { useParams, NavLink, Outlet } from "react-router-dom";
+import './artist-template.css'
+import '../window-dimension.js'
   
 export default function ArtistTemplate(){
     let params = useParams();
@@ -9,7 +15,7 @@ export default function ArtistTemplate(){
         <div style={{ display: "flex" }}>
           <nav
           style={{
-            justifyContent: "center",
+            padding:"2rem",
           }}
         >
           <h2>Artist name: {artist.name}</h2>
@@ -25,8 +31,8 @@ export default function ArtistTemplate(){
         </nav>
         <nav
           style={{
-            borderRight: "solid 1px",
-            padding: "1rem",
+            borderLeft: "solid 1px",
+            padding: "2rem",
           }}
         >
           {(artist.albums).map((album) => (

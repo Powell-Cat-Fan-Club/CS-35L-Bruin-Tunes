@@ -2,6 +2,7 @@
 import React from "react";
 import { Nav, NavLink, NavMenu } 
     from "./NavbarElements"; 
+import Image from '../../images/idkcat.jpg'
 
 const Navbar = () => {
   return (
@@ -22,6 +23,9 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="/about" activeStyle>
             About us!
+          </NavLink>
+          <NavLink to="/login" activeStyle>
+            Sign In
           </NavLink>
         </NavMenu>
       </Nav>
