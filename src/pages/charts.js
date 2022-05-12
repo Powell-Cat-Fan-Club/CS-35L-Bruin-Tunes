@@ -8,11 +8,11 @@ import { Link} from "react-router-dom";
 const Charts = () => {
 
   //Get artists
-  let artists = getArtists();
+  let theArtists = getArtists();
   let [userSearch, setUserSearch] = useState('');
 
   //Sort artists by ranking
-  let sortedArtists = [].concat(artists);
+  let sortedArtists = [].concat(theArtists);
   sortedArtists.sort((a,b) => a.ranking - b.ranking);
   
   //Function to display the list
