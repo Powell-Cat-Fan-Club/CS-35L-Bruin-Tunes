@@ -29,7 +29,7 @@ return (
         <Route path='comments' element={<Comments/>} />
         <Route path='list' element={<List/>} />
         <Route path='login' element={<Login/>} />
-        <Route path='register' element={<SignUp/>} />
+          <Route path='register' element={<SignUp/>} />
         <Route
           path="*"
           element={

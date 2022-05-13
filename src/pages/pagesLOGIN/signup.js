@@ -1,21 +1,62 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
+import {findUser, addUser} from './userinfo_TEMP';
+
+export default function SignUp() {
+  function btnOnClick() {  
+    var eleERROR = document.getElementById('errorTXT'); 
+    
+    var newUser = document.getElementById('nameR').value;
+    if (!newUser) {
+      eleERROR.innerHTML = 'Username required';
+      return;
+    }
+    
+    var newPass = document.getElementById('passwordR').value;
+    if (!newPass) {
+      eleERROR.innerHTML = 'Password required';
+      return;
+    }
+
+    //here is the problem
+    var oldUser = findUser(newUser);
+    if (oldUser) {
+      eleERROR.innerHTML = 'Invalid Username';
+      return;
+    }
+
+    addUser(newUser,newPass);
+    console.log("has gone here");
+    window.location.href = "/login";
+  }
   
-const SignUp = () => {
-  return ( 
+  return (  
     <div>
       <h1>Register</h1>
-      <form action = "/login">
-        <input type='text' name="name" placeholder="Username"/>
-        <br/>
-        <br/>
-        <input type='password' name="password" placeholder="Password"/>
-        <br/>
-        <br/>
-        <button type='submit'>Register</button>
-      </form>
+      <h3 id="errorTXT"></h3>
+      <input type='text' id="nameR" placeholder="Username"/>
+      <br/>
+      <br/>
+      <input type='password' id="passwordR" placeholder="Password"/>
+      <br/>
+      <br/>
+      <button onClick={btnOnClick}>Register</button>
+      
     </div>
   );
 };
 
-export default SignUp;
+
+
+
+
+/*
+      <script type="text/JavaScript">
+               
+      </script>
+*/
+
+
+
+
+
