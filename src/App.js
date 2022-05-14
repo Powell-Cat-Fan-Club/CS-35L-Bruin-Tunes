@@ -7,11 +7,12 @@ import Home from './pages';
 import Artists from './pages/artists';
 import Comments from './pages/comments';
 import About from './pages/about';
-import List from './pages/list';
+import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';
 import Login from './pages/login';
 import Songs from './pages/songs';
+import UserList from './pages/user-lists';
   
 function App() {
 return (
@@ -26,8 +27,9 @@ return (
             <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
         <Route path='comments' element={<Comments/>} />
-        <Route path='list' element={<List/>} />
+        <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
+        <Route path='userlist' element={<UserList/>} />
         <Route
           path="*"
           element={
