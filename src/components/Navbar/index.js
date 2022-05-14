@@ -1,17 +1,21 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from "react";
-import { Nav, NavLink, NavMenu } 
+import { Nav, NavLink, NavMenu, Logo } 
     from "./NavbarElements"; 
-import Image from '../../images/idkcat.jpg'
+import Image from '../../images/cat.png'
 
 const Navbar = () => {
   return (
-    <>
+    <div>
       <Nav>
         <NavMenu>
           <NavLink to="/" activeStyle>
-            Home
+            <Logo src={Image} alt="logo"/>
+            BruinTunes
           </NavLink>
+        </NavMenu>
+
+        <NavMenu style={{marginLeft:"auto"}}>
           <NavLink to="/artists" activeStyle>
             Artist pages
           </NavLink>
@@ -25,11 +29,11 @@ const Navbar = () => {
             About us!
           </NavLink>
           <NavLink to="/login" activeStyle>
-            Sign In
+            <button>Sign In</button>
           </NavLink>
         </NavMenu>
       </Nav>
-    </>
+    </div>
   );
 };
   
