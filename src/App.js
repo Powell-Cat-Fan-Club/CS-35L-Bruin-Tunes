@@ -10,7 +10,8 @@ import About from './pages/about';
 import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';
-import Login from './pages/login';
+import Login from './pages/pagesLOGIN/login';
+import SignUp from './pages/pagesLOGIN/signup';
 import Songs from './pages/songs';
 import UserList from './pages/user-lists';
   
@@ -22,13 +23,14 @@ return (
         <Route exact path='/' element={<Home />} /> 
         <Route path='about' element={<About/>} />
         <Route path='artists' element={<Artists/>} >
-            <Route path=':artistID' element={<ArtistTemplate/>} />
-            <Route path=':artistID/:albumID' element={<Albums/>}/>
-            <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
+          <Route path=':artistID' element={<ArtistTemplate/>} />
+          <Route path=':artistID/:albumID' element={<Albums/>}/>
+          <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
         <Route path='comments' element={<Comments/>} />
         <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
+          <Route path='register' element={<SignUp/>} />
         <Route path='userlist' element={<UserList/>} />
         <Route
           path="*"
