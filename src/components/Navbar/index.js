@@ -22,8 +22,11 @@ const Navbar = () => {
           <NavLink to="/comments" activeStyle>
             Comments
           </NavLink>
-          <NavLink to="/list" activeStyle>
-            Ranking
+          <NavLink to="/charts" activeStyle>
+            Charts
+          </NavLink>
+          <NavLink to="/userlist" activeStyle>
+            Lists
           </NavLink>
           <NavLink to="/about" activeStyle>
             About us!
@@ -31,6 +34,7 @@ const Navbar = () => {
           <NavLink to="/login" activeStyle>
             <button>Sign In</button>
           </NavLink>
+
         </NavMenu>
       </Nav>
     </div>
