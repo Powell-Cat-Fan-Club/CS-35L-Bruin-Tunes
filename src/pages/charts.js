@@ -5,16 +5,14 @@ import { useState } from 'react';
 import { Link} from "react-router-dom";
 
 
-const List = () => {
+const Charts = () => {
 
   //Get artists
-  let artists = getArtists();
+  let theArtists = getArtists();
   let [userSearch, setUserSearch] = useState('');
-  let [filteredResults, setFilteredResults] = useState([]);
-  let filteredSorted = [];
 
   //Sort artists by ranking
-  let sortedArtists = [].concat(artists);
+  let sortedArtists = [].concat(theArtists);
   sortedArtists.sort((a,b) => a.ranking - b.ranking);
   
   //Function to display the list
@@ -27,7 +25,7 @@ const List = () => {
         <ol>
           <nav>
           {sortedArtists.filter((val) => {
-            if (userSearch == "") {
+            if (userSearch === "") {
               return val;
             }
             else if (val.genres.includes(userSearch.toLowerCase())) {
@@ -56,4 +54,4 @@ const List = () => {
   );
 };
   
-export default List;
+export default Charts;

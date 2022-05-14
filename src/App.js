@@ -7,12 +7,13 @@ import Home from './pages';
 import Artists from './pages/artists';
 import Comments from './pages/comments';
 import About from './pages/about';
-import List from './pages/list';
+import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';
 import Login from './pages/pagesLOGIN/login';
 import SignUp from './pages/pagesLOGIN/signup';
 import Songs from './pages/songs';
+import UserList from './pages/user-lists';
   
 function App() {
 return (
@@ -22,14 +23,15 @@ return (
         <Route exact path='/' element={<Home />} /> 
         <Route path='about' element={<About/>} />
         <Route path='artists' element={<Artists/>} >
-            <Route path=':artistID' element={<ArtistTemplate/>} />
-            <Route path=':artistID/:albumID' element={<Albums/>}/>
-            <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
+          <Route path=':artistID' element={<ArtistTemplate/>} />
+          <Route path=':artistID/:albumID' element={<Albums/>}/>
+          <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
         <Route path='comments' element={<Comments/>} />
-        <Route path='list' element={<List/>} />
+        <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
           <Route path='register' element={<SignUp/>} />
+        <Route path='userlist' element={<UserList/>} />
         <Route
           path="*"
           element={
