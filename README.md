@@ -67,9 +67,8 @@ You can do all of the above directly in Github, too! Just follow the instruction
 Follow `Getting Started` to start up the server. If you wish to edit anything in backend, here's a documentation on what you can change (and how you should do it).
 - ONLY change the requests you are sending fetch requests to. Do NOT mess with any other requests.
 - You can find the requests that you are looking for by reading the comments in `backend/routes/record.js`. Each route should (hopefully) be clear as to its function. Find the route you're looking for by looking for the following heading:
-- 
-      > recordRoutes.route("/path").get(function (req, res)
-      > 
+
+      recordRoutes.route("/path").get(function (req, res)
  
  This is an example of a `get` request. If you're running the server on port 5000, you might invoke this request using the URL `http://localhost:5000/path` and a 
   `get` request. If you want to modify the path URL that invokes this request, just change the `"/path"` string in the function header. This `/path` will be 
@@ -92,7 +91,7 @@ Follow `Getting Started` to start up the server. If you wish to edit anything in
         > newparam: req.body.newparam,
         > 
 
-WARNING: MINIMALLY change the request. If you change too much or change something incorrectly, it may break.
+**WARNING: MINIMALLY change the request. If you change too much or change something incorrectly, it may break.**
 If you have further issues connecting to the backend or are confused, please contact Laura about that on Discord.
 
 ## Advice ##
