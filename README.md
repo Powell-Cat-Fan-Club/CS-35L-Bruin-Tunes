@@ -24,14 +24,17 @@ Our motivation for this project is to create a platform for UCLA students to sha
 2. Open up VS Code (or the editor/terminal of your choice). Open a terminal. Type `git clone {url of repository}` to the terminal of your choice (VS Code is what I use, but you can use whatever you want). In VS code, you can also use `ctrl-shift-p` and type in git clone, and an option to do so should come up. 
 3. Once you have done this, `cd` into the new folder and type in `npm install`. This installs the dependencies of the project (outlined in package.json). 
 4. (Potentially optional, but just in case, do this step anyways) `Cd` to the directory `backend`. Type `npm install` to install the dependencies for the backend. 
-5. Add a file called config.env to the `backend` folder. Follow the format of `.env.sample` but replace \<username\> with the username for MongoDB and \<password\> with the password for MongoDB (look at the Discord for details).
-6. Type `node server.js` to start runnning the server and database. If done successfully, you should see the following:
+5. Add a file called config.env to the `backend` folder. Follow the format of `.env.sample` but replace \<username\> with the username for MongoDB and \<password\> with the password for MongoDB (look at the Discord for details). **Do not commit this file. That will result in a security breanch. If you do, we need to change the password.**
+6. Type `npm run server` in `backend` to start running the server and database. If done successfully, you should see the following:
 
       > Server is running on port: 5000
       > 
       > Successfully connected to MongoDB.
-7. Finally, type `npm start` to run the project in your browser. 
-Let me (Laura) know if you have trouble with the above steps.
+      > 
+   The above *does* restart the server every time you make a change to the files in the server (because of `nodemon`). If you don't want this to happen, type `node 
+   server.js` instead.
+7. `Cd` back to the original directory (aka frontend). Finally, type `npm start` to run the project in your browser. 
+Let the Discord know if you have trouble with the above steps.
 
 ## Branches ##
 
@@ -58,6 +61,38 @@ You can do all of the above directly in Github, too! Just follow the instruction
 ### Keeping Up to Date (Pulling from GitHub) ###
 
 1. In your terminal, type `git pull` to pull from the remote repository to your local repository. This fetches the changes and merges them with your local repository. Be sure to read up on the documentation [here](https://www.atlassian.com/git/tutorials/syncing/git-pull).
+
+### Backend Documentation ###
+
+Follow `Getting Started` to start up the server. If you wish to edit anything in backend, here's a documentation on what you can change (and how you should do it).
+- ONLY change the requests you are sending fetch requests to. Do NOT mess with any other requests.
+- You can find the requests that you are looking for by reading the comments in `backend/routes/record.js`. Each route should (hopefully) be clear as to its function. Find the route you're looking for by looking for the following heading:
+
+      recordRoutes.route("/path").get(function (req, res)
+ 
+ This is an example of a `get` request. If you're running the server on port 5000, you might invoke this request using the URL `http://localhost:5000/path` and a 
+  `get` request. If you want to modify the path URL that invokes this request, just change the `"/path"` string in the function header. This `/path` will be 
+  anything past `http://localhost:5000` (or whatever the base URL is). 
+- There are four types of requests in the route: `get`, `post`, `put`, and `delete`. `Get` requests get the data from the database. `Post` will add something to the database. `Put` will update the data in the database. `Delete` deletes the data from the database. 
+- Each object in the database has a unique identifier. To see that unique ID, you can access MongoDB to look at the database.
+- If you want to edit/add parameters to your data object, (1) contact Laura for help, or (2) follow the following documentation:
+     1. Follow the above documentation on finding the route you want to edit.
+     2. ONLY edit the part of the code that looks like this:
+
+        > username: req.body.username,
+        > 
+        > title: req.body.title,
+        > 
+        > comment: req.body.comment,
+        > 
+        > likes: req.body.likes,
+        > 
+        You can add/edit parameters in exactly the way you'd expect:
+        > newparam: req.body.newparam,
+        > 
+
+**WARNING: MINIMALLY change the request. If you change too much or change something incorrectly, it may break.**
+If you have further issues connecting to the backend or are confused, please contact Laura about that on Discord.
 
 ## Advice ##
 
