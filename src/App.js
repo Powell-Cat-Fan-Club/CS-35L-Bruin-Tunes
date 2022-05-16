@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import Home from './pages';
 import Artists from './pages/artists';
-import Comments from './pages/comments';
+import CommentBox from './pages/CommentBox';
 import About from './pages/about';
 import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
@@ -27,7 +27,7 @@ return (
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
-        <Route path='comments' element={<Comments/>} />
+        <Route path='comments' element={<CommentBox/>} />
         <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
           <Route path='register' element={<SignUp/>} />
