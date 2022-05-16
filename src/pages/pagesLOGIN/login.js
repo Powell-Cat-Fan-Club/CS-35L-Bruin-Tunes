@@ -1,8 +1,41 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
-import React from 'react';  
-import {findUser} from './userinfo_TEMP';
+import React, {useEffect, useState} from 'react';  
+//import {findUser} from './userinfo_TEMP';
   
 export default function Login() {
+  const [users, setUsers] = useState();
+
+  useEffect(() => {
+    async function getUsers() {
+      const response = await fetch(`http://localhost:5000/login/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const users = await response.json();
+      setUsers(users);
+    }
+
+    getUsers();
+    //console.log(users);  
+
+    return;
+  });
+
+  function findUser(userID, passID)
+  {
+    for (var i = 0; i<users.length; i++)
+    {
+      if (users[i].password === passID & users[i].username === userID)
+      {
+        return users[i];
+      }
+    }
+    return undefined;
+  }
+
   function logOnClick(){
     var eleERROR = document.getElementById('errorTXT'); 
   
@@ -18,9 +51,10 @@ export default function Login() {
       return;
     }
   
-    var searchUser = findUser(User);
-    if (!searchUser || searchUser.password !== Pass) {
+    var searchUser = findUser(User, Pass);
+    if (typeof(searchUser)=="undefined" ) {
       eleERROR.innerHTML = 'Invalid Username or Password';
+      console.log("fuck you");
       return;
     }
 

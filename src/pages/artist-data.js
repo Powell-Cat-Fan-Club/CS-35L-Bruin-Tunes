@@ -1,4 +1,19 @@
-let artists = [
+// let artists;
+
+// fetch(`http://localhost:5000/artists/`).then(response =>
+// response.json().then(data => ({
+//     data: data,
+//     status: response.status
+// })
+// ).then(res => {
+//     console.log(res.status);
+//     console.log(res.data[0].artist);
+//     artists = res.data;
+//     console.log(artists);
+// }));
+  
+let artists =
+[
     {
         name: "Test Artist",
         ranking: 5,
@@ -84,6 +99,7 @@ let artists = [
 ]
 
 export function getArtists() {
+    console.log(artists);
     return artists;
 }
 
