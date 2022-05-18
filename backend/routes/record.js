@@ -38,7 +38,51 @@ recordRoutes.route("/artists/:id").get(function (req, res) {
       });
 });
 
-// This section will help you update an artist by id.
+//Get artist by name
+//case sensitive
+recordRoutes.route("/artists/artist/:name").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  db_connect.collection("Artists").find({"name": req.params.name}).toArray(function(err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+//Get artist by album (case sensitive)
+recordRoutes.route("/artists/album/:album").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  db_connect.collection("Artists")
+  .find({albums:{$elemMatch:{name : req.params.album}}})
+  .toArray(function(err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+//Get artist by song (case sensitive)
+recordRoutes.route("/artists/song/:song").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  db_connect.collection("Artists")
+  .find({"albums.songs" : {$elemMatch : {"name" : req.params.song} } } )
+  .toArray(function(err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+//gets given album info given the artist and the album name (case sensitive)
+recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  db_connect.collection("Artists")
+  .find({name: req.params.name, albums:{$elemMatch:{name : req.params.album}}}, 
+    {projection : {"albums.$": 1, _id: 0}})
+  .toArray(function(err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+// This section will help you update an artist's likes by id.
 recordRoutes.route("/artists/:id").put(function (req, response) {
   let db_connect = dbo.getDb(); 
   let myquery = { _id: ObjectId( req.params.id )};
