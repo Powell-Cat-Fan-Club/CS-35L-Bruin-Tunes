@@ -9,31 +9,37 @@ const UserList = () => {
 
     let displaySelector = (arrLength) => 
         {    
-            let myArr = [];
-            for (let index = 1; index <= arrLength; index++)
-            { 
-                myArr.push( 
-                    <div>  
-                    <label>{"Your number "  + index + " artist: "}</label>
-                    <select>
-                        {theArtists.map((artist) => 
-                            <option>{artist.name}</option>
-                        )}
-                        </select>
-                    <input type='button' value ='Submit'/>
-                    </div>
-                )
-            }
+                let myArr = [];
+                for (let index = 1; index <= theArtists.length; index++)
+                { 
+                    myArr.push(
+                        <div>
+                            <fieldset>
+                            <legend>{"Artist " + index}</legend>
+                            {theArtists.map((artist) => 
+                            <div>
+                                <label><input type="radio" id={artist.name} name={index} value={artist.name} />{artist.name}</label>
+                            </div>)
+                            }
+                            </fieldset>
+                        </div>
+                    )
+                }   
 
-            return myArr;          
+                return (
+                <form>
+                    <label><input type="text" name="name" id="name" placeholder="Your name" /></label>
+                    {myArr}
+                    <button type="submit">Submit</button>
+                </form>
+                
+                );
         }
 
     return (
         <div>
-            <h1>List your top artists artists!</h1>
-            <form> 
-                {displaySelector(theArtists.length)}
-            </form>
+            <h1>List your top artists!</h1>
+                   {displaySelector(theArtists.length)}
         </div>
     )
 }
