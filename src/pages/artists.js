@@ -1,6 +1,7 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 //credit to https://reactrouter.com/docs/en/v6/getting-started/tutorial
-import React from 'react';
+// credit to https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
+import React, {useState, useEffect, useRef} from 'react';
 import { useLocation, NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { getArtists } from './artist-data';
 
@@ -10,9 +11,21 @@ function QueryNavLink( {to, ...props}) {
 }
   
 const Artists = () => {
-  let artists = getArtists();
+  //let artists = getArtists();
   let [searchParams, setSearchParams] = useSearchParams();
+  const [artists, setArtists] = useState([]);
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/artists/`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setArtists(a);
+    })
+  }, [artists]);
+  
+
   return (
+    artists ?
     <h1>Find your favorite artists!
       <div style={{ display: "flex" }}>
         <nav
@@ -71,27 +84,32 @@ const Artists = () => {
             if (!filterAttr) return name.startsWith(filter.toLowerCase());
             return false;
           })
-          .map((artist) => (
-            <QueryNavLink
-              style={({ isActive }) => { 
-                return {
-                  display: "block", 
-                  margin: "1rem 0", 
-                  color: isActive ? "red" : "",
-                };
-              }}
-              to={`/artists/${artist.name}`}
-              key={artist.name}
-            >
-              {artist.name}
-            </QueryNavLink>
-          ))}
+
+      .map((artist) => (
+        <QueryNavLink
+          style={({ isActive }) => { 
+            return {
+              display: "block", 
+              margin: "1rem 0", 
+              color: isActive ? "red" : "",
+            };
+          }}
+          to={`/artists/${artist.name}`}
+          key={artist._id}
+        >
+          {artist.name}
+        </QueryNavLink>
+      ))}
+
         </nav>
         <Outlet />
       </div>
       </h1>
-  
+    : <h1> Loading </h1>
   );
+        
+
+  
 };
   
 

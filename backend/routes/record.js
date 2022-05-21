@@ -27,9 +27,9 @@ recordRoutes.route("/artists").get(function (req, res) {
 });
 
 //Get artist by ID
-recordRoutes.route("/artists/:id").get(function (req, res) {
+recordRoutes.route("/artists/artist/:name").get(function (req, res) {
   let db_connect = dbo.getDb("BruinTunes");
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { name:  req.params.name };
   db_connect
       .collection("Artists")
       .findOne(myquery, function (err, result) {
@@ -38,15 +38,58 @@ recordRoutes.route("/artists/:id").get(function (req, res) {
       });
 });
 
+// gets specific album from albums collection, for a specific artist
+recordRoutes.route("/artists/artist/:artist/album/:album").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  let myquery = { name:  req.params.album, artist:req.params.artist };
+  db_connect
+      .collection("Albums")
+      .findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+});
+
+// gets specific song from songs collection, for a specific album
+recordRoutes.route("/artists/artist/:artist/album/:album/song/:song").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  let myquery = { name:  req.params.song, album: req.params.album };
+  db_connect
+      .collection("Songs")
+      .findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+});
+
+// attempt at routing
+// recordRoutes.route("/artists/artist/:name/album/:album").get(function (req, res) {
+//   let db_connect = dbo.getDb("BruinTunes");
+//   let myquery = { name:  req.params.name };
+//   let myalbum = { name: req.params.album };
+//   db_connect
+//       .collection("Artists")
+//       .aggregate([
+//         { $match: {myquery}},
+//         { $unwind: {array: 1}},
+//         { $match: {myalbum}}
+//       ]);
+//       //.findOne({}, myquery)
+//       // .findOne(myalbum, function (err, result) {
+//       //   if (err) throw err;
+//       //   res.json(result);
+//       // });
+// });
+
 //Get artist by name
 //case sensitive
-recordRoutes.route("/artists/artist/:name").get(function (req, res) {
-  let db_connect = dbo.getDb("BruinTunes");
-  db_connect.collection("Artists").find({"name": req.params.name}).toArray(function(err, result) {
-    if (err) throw err;
-    res.json(result);
-  });
-});
+// recordRoutes.route("/artists/artist/:name").get(function (req, res) {
+//   let db_connect = dbo.getDb("BruinTunes");
+//   db_connect.collection("Artists").find({"name": req.params.name}).toArray(function(err, result) {
+//     if (err) throw err;
+//     res.json(result);
+//   });
+// });
 
 //Get artist by album (case sensitive)
 recordRoutes.route("/artists/album/:album").get(function (req, res) {
@@ -70,22 +113,34 @@ recordRoutes.route("/artists/song/:song").get(function (req, res) {
   });
 });
 
-//gets given album info given the artist and the album name (case sensitive)
+
+
+// //gets given album info given the artist and the album name (case sensitive)
+// recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, res) {
+//   let db_connect = dbo.getDb("BruinTunes");
+//   db_connect.collection("Artists")
+//   .find({name: req.params.name, albums:{$elemMatch:{name : req.params.album}}}, 
+//     {projection : {"albums.$": 1, _id: 0}})
+//   .toArray(function(err, result) {
+//     if (err) throw err;
+//     res.json(result);
+//   });
+// });
 recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, res) {
   let db_connect = dbo.getDb("BruinTunes");
-  db_connect.collection("Artists")
-  .find({name: req.params.name, albums:{$elemMatch:{name : req.params.album}}}, 
-    {projection : {"albums.$": 1, _id: 0}})
-  .toArray(function(err, result) {
+  db_connect
+  .collection("Artists")
+  .findOne({name: req.params.name}, {albums:{$elemMatch:{name : req.params.album}}}, function(err, result) {
     if (err) throw err;
     res.json(result);
   });
 });
 
-// This section will help you update an artist's likes by id.
-recordRoutes.route("/artists/:id").put(function (req, response) {
+
+// This section will help you update an artist's likes by name.
+recordRoutes.route("/artists/likes/:name").put(function (req, response) {
   let db_connect = dbo.getDb(); 
-  let myquery = { _id: ObjectId( req.params.id )};
+  let myquery = { name: ObjectId( req.params.name )};
 
   let newvalues = {   
     $set: {
