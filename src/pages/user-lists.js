@@ -36,7 +36,7 @@ const UserList = () => {
         return;
       });
     
-      setForm({username:"", userList:[]});
+      setForm({username:"", userList:new Array(5).fill(null)});
       navigate("/userlist");
     }
 
@@ -51,7 +51,8 @@ const UserList = () => {
                             <legend>{"Artist " + index}</legend>
                             {theArtists.map((artist) => 
                             <div>
-                                <label><input type="radio" id={artist.name} name={index} value={artist.name} />{artist.name}</label>
+                                <label><input type="radio" id={artist.name} name={index} value={artist.name}
+                                onChange={(e) => updateForm({ userList: e.target.value })} />{artist.name}</label>
                             </div>)
                             }
                             </fieldset>
@@ -61,7 +62,8 @@ const UserList = () => {
 
                 return (
                 <form onSubmit={onSubmit}>
-                    <label><input type="text" name="name" id="name" placeholder="Your name" /></label>
+                    <label><input type="text" name="name" id="name" placeholder="Your name"
+                    onChange={(e) => updateForm({ username: e.target.value})} /></label>
                     {myArr}
                     <button type="submit">Submit</button>
                 </form>
