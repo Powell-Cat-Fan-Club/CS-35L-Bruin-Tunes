@@ -10,7 +10,7 @@ const UserList = () => {
 
     const [form, setForm] = useState({
         username: "",
-        userList: new Array(5).fill(null)
+        userList: []
       });
       const navigate = useNavigate();
     
@@ -19,7 +19,7 @@ const UserList = () => {
           return {...prev, ...value};
         });
       }
-    
+
     
     async function onSubmit(e) {
       e.preventDefault();
@@ -36,9 +36,17 @@ const UserList = () => {
         return;
       });
     
-      setForm({username:"", userList:new Array(5).fill(null)});
+      setForm({username:"", userList:[]});
       navigate("/userlist");
     }
+
+    let arrayUpdater = (theArr, theElement) => 
+    {
+        theArr.push(theElement);
+        return theArr;  
+    }
+
+
 
     let displaySelector = (arrLength) => 
         {    
@@ -52,7 +60,7 @@ const UserList = () => {
                             {theArtists.map((artist) => 
                             <div>
                                 <label><input type="radio" id={artist.name} name={index} value={artist.name}
-                                onChange={(e) => updateForm({ userList: e.target.value })} />{artist.name}</label>
+                                onChange={(e) => updateForm({userList: [...form.userList, e.target.value] })} />{artist.name}</label>
                             </div>)
                             }
                             </fieldset>
