@@ -14,7 +14,17 @@ import { useState, useEffect } from 'react';
 
 const Songs = () => {
     let params = useParams();
-    let song = getSong(params.artistID, params.albumID, params.songID);
+    //let song = getSong(params.artistID, params.albumID, params.songID);
+    const [song, setSong] = useState();
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/artists/artist/${params.artistID}/album/${params.albumID}/song/${params.songID}`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setSong(a);
+      //console.log(a);
+    })
+  }, [song]);
 
     function getWindowDimensions() {
         const { innerWidth: width, innerHeight: height } = window;
@@ -43,7 +53,9 @@ const Songs = () => {
     // Render function for Prismic headless CMS pages
     function Content() {
         const { width } = useWindowDimensions();
-        let videoUrl = song.url;
+        let videoUrl;
+        if (song)
+        { videoUrl = song.url; }
         let videoCode;
         if (videoUrl) {
         videoCode = videoUrl.split("v=")[1].split("&")[0];
@@ -72,7 +84,7 @@ const Songs = () => {
         );
     }
 
-    return (
+    return ( song ?
         <div style={{ display: "flex" }}>
           <nav
           style={{
@@ -88,6 +100,7 @@ const Songs = () => {
             <NavLink to={`/artists/${params.artistID}/${params.albumID}`}> Back </NavLink>
         </nav>
         </div>
+        : <h1> Loading {Content()} </h1>
     )
 
 }

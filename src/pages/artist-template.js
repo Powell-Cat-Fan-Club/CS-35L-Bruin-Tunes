@@ -2,7 +2,7 @@
 shows name of artist, number of albums, genres, and links to albums
 */ 
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { getArtist } from "./artist-data";
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import './artist-template.css'
@@ -10,9 +10,36 @@ import '../window-dimension.js'
   
 export default function ArtistTemplate(){
     let params = useParams();
-    let artist = getArtist(params.artistID);
+    const [artist, setArtist] = useState();
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/artists/artist/${params.artistID}`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setArtist(a);
+    })
+  }, [artist]);
+
+  async function likeArtist()
+  {
+    // in progress TODO: currently button does nothing
+
+    // let numlikes = artist.likes+1;
+    // await fetch(`http://localhost:5000/artists/likes/${params.artistID}`, {
+    //   method: "POST", 
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   }, 
+    //   body: JSON.stringify({ name: artist.name, likes: numlikes, genres: artist.genres, albums: artist.albums})
+    // })
+    // .catch (error => {
+    //   window.alert(error);
+    //   return;
+    // });
+  }
+
     return (
-        <div style={{ display: "flex" }}>
+        artist ? (<div style={{ display: "flex" }}>
           <nav
           style={{
             padding:"2rem",
@@ -20,13 +47,14 @@ export default function ArtistTemplate(){
         >
           <h2>Artist name: {artist.name}</h2>
           <p>
-            Ranking: {artist.ranking}
+            Likes: {artist.likes}
           </p>
-          <p>Number of albums: {artist.numalbums}</p>
           <p>Genres: </p>
           <ul>
             {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
           </ul>
+
+          <button onClick={likeArtist}>❤️</button>
           
         </nav>
         <nav
@@ -38,15 +66,16 @@ export default function ArtistTemplate(){
           {(artist.albums).map((album) => (
             <NavLink
               style={{ display: "block", margin: "1rem 0" }}
-              to={`/artists/${artist.name}/${album.name}`}
-              key={album.name}
+              to={`/artists/${artist.name}/${album}`}
+              key={album}
             >
-              {album.name}
+              {album}
             </NavLink>
           ))}
         </nav>
         <Outlet />
-      </div>
+      </div>) 
+      : <h2>loading</h2>
         
       );
 }

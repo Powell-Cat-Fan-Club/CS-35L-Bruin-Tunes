@@ -98,18 +98,45 @@ let artists =
     },
 ]
 
+// import React from "react";
+// import {useState, useEffect} from "react";
+// export default function GetArtists() {
+//     const [artists, setArt] = useState();
+
+//   useEffect(() => {
+//     async function getArt() {
+//       const response = await fetch(`http://localhost:5000/artists/`);
+
+//       if (!response.ok) {
+//         const message = `An error occurred: ${response.statusText}`;
+//         window.alert(message);
+//         return;
+//       }
+//       const artists = await response.json();
+//       setArt(artists);
+//     }
+
+//     getArt();
+//     console.log(artists);  
+
+//     return;
+//   });
+// }
+
 export function getArtists() {
     console.log(artists);
     return artists;
 }
 
 export function getArtist(name) {
+    
     return artists.find(
         (artist) => artist.name===name
     );
 }
 
 export function getAttrArtist(input) {
+    
     return artists.find(
         (artist) => artist.attributes.includes(input)
     );
