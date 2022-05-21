@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Routes, Route}
 import Home from './pages';
 import Artists from './pages/artists';
 import CommentBox from './pages/CommentBox';
+import CommentForm from './pages/CommentForm';
+import CommentList from './pages/CommentList';
+import Comment from './pages/Comment';
 import About from './pages/about';
 import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
@@ -27,7 +30,9 @@ return (
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
-        <Route path='comments' element={<CommentBox/>} />
+        <Route path='comments' element={<CommentBox/>} >
+
+        </Route>
         <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
           <Route path='register' element={<SignUp/>} />
