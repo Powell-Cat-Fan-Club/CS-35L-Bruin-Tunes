@@ -2,16 +2,27 @@
 shows name of album, release date, extra info, and links to songs
 */ 
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { getAlbum, getArtist } from './artist-data';
 
 
 const Albums = () => {
     let params = useParams();
-    let artist = getArtist(params.artistID);
-    let album = getAlbum(params.artistID, params.albumID);
-    return (
+    //let artist = getArtist(params.artistID);
+    const [album, setAlbum] = useState();
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/artists/artist/${params.artistID}/album/${params.albumID}`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setAlbum(a);
+      //console.log(a);
+    })
+  }, [album]);
+
+    //let album = getAlbum(params.artistID, params.albumID);
+    return ( album ?
         <div style={{ display: "flex" }}>
           <nav
           style={{
@@ -22,7 +33,7 @@ const Albums = () => {
           <p>
             Release date: {album.date}
           </p>
-          <p>Info: {album.info}</p>
+          {/* <p>Info: {album.info}</p> */}
           </nav>
           <nav style={{
             padding:"2rem",
@@ -32,15 +43,17 @@ const Albums = () => {
         {(album.songs).map((song) => (
             <NavLink
               style={{ display: "block", margin: "1rem 0" }}
-              to={`/artists/${artist.name}/${album.name}/${song.name}`}
-              key={song.name}
+              to={`/artists/${params.artistID}/${album.name}/${song}`}
+              key={song}
             >
-              {song.name}
+              {song}
             </NavLink>
           ))}
         </nav>
         <Outlet />
       </div>
+      //console.log(album) 
+      : <h2>loading...</h2>
     )
 
 }
