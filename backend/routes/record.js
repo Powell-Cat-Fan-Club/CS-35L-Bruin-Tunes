@@ -260,7 +260,7 @@ recordRoutes.route("/lists/add").post(function (req, response) {
   let db_connect = dbo.getDb("BruinTunes");
   let myobj = {
     username: req.body.username,    
-    songs: req.body.songs, 
+    userList: req.body.userList, 
   };
   db_connect.collection("Lists").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -276,7 +276,7 @@ recordRoutes.route("/lists/update/:id").put(function (req, response) {
   let newvalues = {   
     $set: {     
       username: req.body.username,    
-      songs: req.body.songs,  
+      userList: req.body.userList,  
     }, 
    };
   

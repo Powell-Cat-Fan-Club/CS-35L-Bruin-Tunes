@@ -2,10 +2,51 @@ import React from 'react';
 import { getArtists } from "./artist-data";
 import { useState } from 'react';
 import { Link} from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const UserList = () => {
 
     let theArtists = getArtists();
+
+    const [form, setForm] = useState({
+        username: "",
+        userList: []
+      });
+      const navigate = useNavigate();
+    
+      function updateForm(value) {
+        return setForm((prev) => {
+          return {...prev, ...value};
+        });
+      }
+
+    
+    async function onSubmit(e) {
+      e.preventDefault();
+      const newList = {...form};
+      await fetch("http://localhost:5000/lists/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        }, 
+        body: JSON.stringify(newList),
+      })
+      .catch (error => {
+        window.alert(error);
+        return;
+      });
+    
+      setForm({username:"", userList:[]});
+      navigate("/userlist");
+    }
+
+    let arrayUpdater = (theArr, theElement) => 
+    {
+        theArr.push(theElement);
+        return theArr;  
+    }
+
+
 
     let displaySelector = (arrLength) => 
         {    
@@ -18,7 +59,8 @@ const UserList = () => {
                             <legend>{"Artist " + index}</legend>
                             {theArtists.map((artist) => 
                             <div>
-                                <label><input type="radio" id={artist.name} name={index} value={artist.name} />{artist.name}</label>
+                                <label><input type="radio" id={artist.name} name={index} value={artist.name}
+                                onChange={(e) => updateForm({userList: [...form.userList, e.target.value] })} />{artist.name}</label>
                             </div>)
                             }
                             </fieldset>
@@ -27,8 +69,9 @@ const UserList = () => {
                 }   
 
                 return (
-                <form>
-                    <label><input type="text" name="name" id="name" placeholder="Your name" /></label>
+                <form onSubmit={onSubmit}>
+                    <label><input type="text" name="name" id="name" placeholder="Your name"
+                    onChange={(e) => updateForm({ username: e.target.value})} /></label>
                     {myArr}
                     <button type="submit">Submit</button>
                 </form>
