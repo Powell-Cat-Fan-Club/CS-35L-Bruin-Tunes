@@ -22,20 +22,18 @@ export default function ArtistTemplate(){
 
   async function likeArtist()
   {
-    // in progress TODO: currently button does nothing
-
-    // let numlikes = artist.likes+1;
-    // await fetch(`http://localhost:5000/artists/likes/${params.artistID}`, {
-    //   method: "POST", 
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   }, 
-    //   body: JSON.stringify({ name: artist.name, likes: numlikes, genres: artist.genres, albums: artist.albums})
-    // })
-    // .catch (error => {
-    //   window.alert(error);
-    //   return;
-    // });
+    let numlikes = artist.likes+1;
+    await fetch(`http://localhost:5000/artists/artist/likes/${artist._id}`, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify({likes: numlikes})
+    })
+    .catch (error => {
+      window.alert(error);
+      return;
+    });
   }
 
     return (
@@ -45,16 +43,18 @@ export default function ArtistTemplate(){
             padding:"2rem",
           }}
         >
-          <h2>Artist name: {artist.name}</h2>
-          <p>
-            Likes: {artist.likes}
-          </p>
-          <p>Genres: </p>
+          <img src={artist.image} width={window.innerWidth*0.4}/>
+          <h3>Artist: {artist.name}</h3>
+          <p>Info: {artist.info}</p>
+          <p>Genres: 
           <ul>
             {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
           </ul>
+          </p>
 
-          <button onClick={likeArtist}>❤️</button>
+          <button onClick={likeArtist}>❤️ {artist.likes} likes!</button> 
+            
+          
           
         </nav>
         <nav

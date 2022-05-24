@@ -1,7 +1,7 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 //credit to https://reactrouter.com/docs/en/v6/getting-started/tutorial
 // credit to https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useLocation, NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { getArtists } from './artist-data';
 
