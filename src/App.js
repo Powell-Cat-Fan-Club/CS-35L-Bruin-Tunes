@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './components';
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import Home from './pages';
@@ -30,9 +30,7 @@ return (
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
         </Route>
-        <Route path='comments' element={<CommentBox/>} >
-
-        </Route>
+        <Route path='comments' element={<CommentBox/>} />
         <Route path='charts' element={<Charts/>} />
         <Route path='login' element={<Login/>} />
           <Route path='register' element={<SignUp/>} />
