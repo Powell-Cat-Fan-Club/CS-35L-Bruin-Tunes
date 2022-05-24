@@ -22,20 +22,18 @@ export default function ArtistTemplate(){
 
   async function likeArtist()
   {
-    // in progress TODO: currently button does nothing
-
-    // let numlikes = artist.likes+1;
-    // await fetch(`http://localhost:5000/artists/likes/${params.artistID}`, {
-    //   method: "POST", 
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   }, 
-    //   body: JSON.stringify({ name: artist.name, likes: numlikes, genres: artist.genres, albums: artist.albums})
-    // })
-    // .catch (error => {
-    //   window.alert(error);
-    //   return;
-    // });
+    let numlikes = artist.likes+1;
+    await fetch(`http://localhost:5000/artists/artist/likes/${artist._id}`, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify({likes: numlikes})
+    })
+    .catch (error => {
+      window.alert(error);
+      return;
+    });
   }
 
     return (
