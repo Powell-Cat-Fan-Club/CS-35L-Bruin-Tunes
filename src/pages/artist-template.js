@@ -43,16 +43,18 @@ export default function ArtistTemplate(){
             padding:"2rem",
           }}
         >
-          <h2>Artist name: {artist.name}</h2>
-          <p>
-            Likes: {artist.likes}
-          </p>
-          <p>Genres: </p>
+          <img src={artist.image} width={window.innerWidth*0.4}/>
+          <h3>Artist: {artist.name}</h3>
+          <p>Info: {artist.info}</p>
+          <p>Genres: 
           <ul>
             {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
           </ul>
+          </p>
 
-          <button onClick={likeArtist}>❤️</button>
+          <button onClick={likeArtist}>❤️ {artist.likes} likes!</button> 
+            
+          
           
         </nav>
         <nav
