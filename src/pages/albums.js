@@ -33,7 +33,6 @@ const Albums = () => {
           <p>
             Release date: {album.date}
           </p>
-          {/* <p>Info: {album.info}</p> */}
           </nav>
           <nav style={{
             padding:"2rem",
