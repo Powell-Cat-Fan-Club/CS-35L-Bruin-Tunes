@@ -137,10 +137,10 @@ recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, r
 });
 
 
-// This section will help you update an artist's likes by name.
-recordRoutes.route("/artists/likes/:name").put(function (req, response) {
+// This section will help you update an artist's likes by id.
+recordRoutes.route("/artists/artist/likes/:id").put(function (req, response) {
   let db_connect = dbo.getDb(); 
-  let myquery = { name: ObjectId( req.params.name )};
+  let myquery = { _id: ObjectId( req.params.id )};
 
   let newvalues = {   
     $set: {
