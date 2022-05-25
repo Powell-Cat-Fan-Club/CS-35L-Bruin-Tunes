@@ -6,7 +6,6 @@ shows name and youtube video of song
 
 import React from 'react';
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import { getSong } from './artist-data';
 import Youtube from "react-youtube";
 
 import { useState, useEffect } from 'react';

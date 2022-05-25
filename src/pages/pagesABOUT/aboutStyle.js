@@ -1,7 +1,16 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
+    justify-content: center;
+    margin: 1rem 0px 5rem;
+`
 
+export const WebDescription = styled.p`
+    color: #000;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    margin: 1rem 5rem 0px;  
 `
 
 export const TeamContainer = styled.div`
@@ -10,7 +19,6 @@ export const TeamContainer = styled.div`
     flex-flow: row wrap;
     align-items: flex-start;
 `
-
 
 export const PersonCard = styled.div`
     width: 15%;
@@ -33,7 +41,6 @@ export const PersonCard = styled.div`
         width: 95%;
     }
 `
-
 
 export const PersonName = styled.h4`
     color: Black;

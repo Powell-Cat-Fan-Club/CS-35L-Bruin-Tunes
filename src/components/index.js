@@ -8,7 +8,7 @@ import {
   NavbarExtendedContainer,
   NavbarInnerContainer,
   NavbarLinkContainer,
-  NavbarLinkLogo,
+  NavbarLogo,
   NavbarLink,
   Logo,
   OpenLinksButton,
@@ -23,10 +23,10 @@ function Navbar() {
     <NavbarContainer extendNavbar={extendNavbar}>
       <NavbarInnerContainer>
         <LeftContainer>
-          <NavbarLinkLogo to="/"> 
+          <NavbarLogo to="/"> 
             <Logo src={LogoImg} alt="Powell Cat's Music" />
             &nbsp;BruinTunes
-          </NavbarLinkLogo>
+          </NavbarLogo>
         </LeftContainer>
         
         <RightContainer>

@@ -3,9 +3,8 @@ shows name of artist, number of albums, genres, and links to albums
 */ 
 
 import React, {useState, useEffect} from "react";
-import { getArtist } from "./artist-data";
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import '../window-dimension.js'
+//import '../window-dimension.js'
   
 export default function ArtistTemplate(){
     let params = useParams();

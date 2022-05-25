@@ -4,12 +4,9 @@ shows name of album, release date, extra info, and links to songs
 
 import React, {useState, useEffect} from 'react';
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import { getAlbum, getArtist } from './artist-data';
-
 
 const Albums = () => {
     let params = useParams();
-    //let artist = getArtist(params.artistID);
     const [album, setAlbum] = useState();
 
   useEffect(() => {

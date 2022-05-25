@@ -3,7 +3,6 @@
 // credit to https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
 import React, {useState, useEffect} from 'react';
 import { useLocation, NavLink, Outlet, useSearchParams } from "react-router-dom";
-import { getArtists } from './artist-data';
 
 function QueryNavLink( {to, ...props}) {
   let location = useLocation();

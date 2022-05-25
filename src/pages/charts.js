@@ -1,6 +1,5 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
-import { getArtists } from "./artist-data";
 import { useState, useEffect } from 'react';
 import { Link} from "react-router-dom";
 

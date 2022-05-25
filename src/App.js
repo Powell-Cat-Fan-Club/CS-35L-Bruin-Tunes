@@ -3,19 +3,25 @@ import './App.css';
 import Navbar from './components';
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
+
 import Home from './pages/pagesMAIN';
-import Artists from './pages/artists';
+import About from './pages/pagesABOUT/about';
+
 import CommentBox from './pages/CommentBox';
 import CommentForm from './pages/CommentForm';
 import CommentList from './pages/CommentList';
 import Comment from './pages/Comment';
-import About from './pages/pagesABOUT/about';
+
 import Charts from './pages/charts';
-import ArtistTemplate from './pages/artist-template';
-import Albums from './pages/albums';
-import Login from './pages/pagesLOGIN/login';
+
+import Artists from './pages/pagesARTISTS/artists';
+import ArtistTemplate from './pages/pagesARTISTS/artists-template';
+import Albums from './pages/pagesARTISTS/albums';
+import Songs from './pages/pagesARTISTS/songs';
+
+import Login from './pages/pagesLOGIN/login'
 import SignUp from './pages/pagesLOGIN/signup';
-import Songs from './pages/songs';
+
 import UserList from './pages/user-lists';
   
 function App() {
