@@ -1,12 +1,30 @@
 import React from 'react';
 import { getArtists } from "./artist-data";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link} from "react-router-dom";
 import { useNavigate } from "react-router";
 
 const UserList = () => {
 
-    let theArtists = getArtists();
+  const [artists, setArtists] = useState([]);
+  const [lists, setLists] = useState([]);
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/artists/`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setArtists(a);
+    })
+  }, [artists]);
+
+  useEffect(() => {
+    fetch (`http://localhost:5000/lists/`)
+    .then ((res) =>res.json())
+    .then((a) => {
+      setLists(a);
+    })
+  }, [lists]);
+
 
     const [form, setForm] = useState({
         username: "",
@@ -22,7 +40,7 @@ const UserList = () => {
 
     
     async function onSubmit(e) {
-      e.preventDefault();
+      //e.preventDefault();
       const newList = {...form};
       await fetch("http://localhost:5000/lists/add", {
         method: "POST",
@@ -40,24 +58,46 @@ const UserList = () => {
       navigate("/userlist");
     }
 
-    let arrayUpdater = (theArr, theElement) => 
+
+    let displaySongs = (arr) =>
     {
-        theArr.push(theElement);
-        return theArr;  
+      let theArr = [];
+
+      for (let index = 1; index <= arr.length; index++)
+      {
+          theArr.push(
+            <div>
+                {"Artist " + index + ": " + arr[index - 1]}
+            </div>
+          )
+      }
+      return (
+        <div>{theArr}</div>
+      )
     }
-
-
-
-    let displaySelector = (arrLength) => 
+    let displayLists = () => 
+    {   
+      return (
+        <div>
+             {lists.map((list, index) => 
+                <div>
+                  <br></br>
+                    {list.username}
+                    {displaySongs(list.userList)}
+                </div>)}
+        </div> 
+      )
+    }
+    let displaySelector = () => 
         {    
                 let myArr = [];
-                for (let index = 1; index <= theArtists.length; index++)
+                for (let index = 1; index <= artists.length; index++)
                 { 
                     myArr.push(
                         <div>
                             <fieldset>
-                            <legend>{"Artist " + index}</legend>
-                            {theArtists.map((artist) => 
+                            <legend>{"Artist #" + index}</legend>
+                            {artists.map((artist) => 
                             <div>
                                 <label><input type="radio" id={artist.name} name={index} value={artist.name}
                                 onChange={(e) => updateForm({userList: [...form.userList, e.target.value] })} />{artist.name}</label>
@@ -82,7 +122,9 @@ const UserList = () => {
     return (
         <div>
             <h1>List your top artists!</h1>
-                   {displaySelector(theArtists.length)}
+                  {displaySelector()}
+                  Current lists: <br></br>
+                  {displayLists()}
         </div>
     )
 }
