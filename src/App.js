@@ -3,13 +3,13 @@ import './App.css';
 import Navbar from './components';
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
-import Home from './pages';
+import Home from './pages/pagesMAIN';
 import Artists from './pages/artists';
 import CommentBox from './pages/CommentBox';
 import CommentForm from './pages/CommentForm';
 import CommentList from './pages/CommentList';
 import Comment from './pages/Comment';
-import About from './pages/about';
+import About from './pages/pagesABOUT/about';
 import Charts from './pages/charts';
 import ArtistTemplate from './pages/artist-template';
 import Albums from './pages/albums';

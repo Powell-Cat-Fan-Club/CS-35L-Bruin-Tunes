@@ -25,7 +25,7 @@ function Navbar() {
         <LeftContainer>
           <NavbarLinkLogo to="/"> 
             <Logo src={LogoImg} alt="Powell Cat's Music" />
-            &nbsp; BruinTunes
+            &nbsp;BruinTunes
           </NavbarLinkLogo>
         </LeftContainer>
         

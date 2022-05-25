@@ -4,31 +4,29 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`
-  width: 100%;
   height: ${(props) => (props.extendNavbar ? "auto" : "80px")};
   background-color: #2774AE;
   
   display: flex;
-  padding: 0.5rem;
   flex-direction: column;
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     height: 80px;
   }
 `;
 
 export const LeftContainer = styled.div`
-  flex: 40%;
+  flex: 30%;
   display: flex;
   align-items: stretch;
-  padding-left: 1%;
+  padding-left: 0%;
 `;
 
 export const RightContainer = styled.div`
-  flex: 60%;
+  flex: 70%;
   display: flex;
   align-items: stretch;
   justify-content: flex-end;
-  padding-right: 1%;
+  padding-right: 0%;
 `;
 
 export const NavbarInnerContainer = styled.div`
@@ -54,18 +52,19 @@ export const NavbarLink = styled(Link)`
   height: 100%;
   cursor: pointer;
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `;
 
 export const NavbarLinkLogo = styled(Link)`
   color: white;
-  /*font-size: x-large;  not set */
+  font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif; /* not set */
   text-decoration: none;
   
   display: flex;
+  padding: 0 .5rem;
   align-items: center;
   height: 100%;
   cursor: pointer;
@@ -77,11 +76,11 @@ export const NavbarLinkExtended = styled(Link)`
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   text-align: center;
-  margin: 10px;
+  margin: 10px 0;
 `;
 
 export const Logo = styled.img`
-  height: 100%;
+  height: 80%;
   width: auto;
 `;
 
@@ -91,12 +90,12 @@ export const OpenLinksButton = styled.button`
 
   background: none;
   border: none;
-  padding: 0 1rem;
+  margin-right: 1rem;
   
   color: white;
   font-size: 3rem;
   cursor: pointer;
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     display: none;
   }
 `;
@@ -107,7 +106,7 @@ export const NavbarExtendedContainer = styled.div`
   align-items: center;
 
   height: auto;
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     display: none;
   }
 `;
