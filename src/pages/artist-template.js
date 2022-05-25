@@ -36,16 +36,17 @@ export default function ArtistTemplate(){
   }
 
     return (
-        artist ? (<div style={{ display: "flex" }}>
+        artist ? (<div style={{ display: "flex",  }}>
           <nav
           style={{
             padding:"2rem",
+            width: window.innerWidth*0.6,
           }}
         >
-          <img src={artist.image} width={window.innerWidth*0.4}/>
-          <h3>Artist: {artist.name}</h3>
-          <p>Info: {artist.info}</p>
-          <p>Genres: 
+          <img src={artist.image} width={window.innerWidth*0.6}/>
+          <h1>Artist: {artist.name}</h1>
+          <p><h2>Info:</h2>{artist.info}</p>
+          <p><h2>Genres: </h2>
           <ul>
             {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
           </ul>
@@ -60,6 +61,7 @@ export default function ArtistTemplate(){
           style={{
             borderLeft: "solid 1px",
             padding: "2rem",
+            maxWidth: window.innerWidth * 0.2
           }}
         >
           {(artist.albums).map((album) => (
@@ -68,7 +70,7 @@ export default function ArtistTemplate(){
               to={`/artists/${artist.name}/${album}`}
               key={album}
             >
-              {album}
+              <h2>{album}</h2>
             </NavLink>
           ))}
         </nav>

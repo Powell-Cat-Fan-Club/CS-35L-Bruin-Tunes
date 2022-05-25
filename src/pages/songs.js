@@ -63,8 +63,8 @@ const Songs = () => {
     
     
         const opts = {
-            height:  width / 3 * 9 / 16,
-            width: width / 3,
+            height:  width * 0.6 * 9 / 16,
+            width: width * 0.6,
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1
@@ -88,16 +88,18 @@ const Songs = () => {
         <div style={{ display: "flex" }}>
           <nav
           style={{
-            padding: "2rem"
+            padding: "2rem",
+            width: window.innerWidth*0.6
           }}
         >
           <h2>Song name: {song.name}</h2>
           {Content()}
         </nav>
         <nav style = {{
-            padding:"2rem"
+            padding:"2rem",
+            maxWidth: window.innerWidth * 0.2
         }}>
-            <NavLink to={`/artists/${params.artistID}/${params.albumID}`}> Back </NavLink>
+            <NavLink to={`/artists/${params.artistID}/${params.albumID}`}> <h1>Back</h1> </NavLink>
         </nav>
         </div>
         : <h1> Loading {Content()} </h1>

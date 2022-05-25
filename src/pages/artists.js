@@ -26,15 +26,18 @@ const Artists = () => {
 
   return (
     artists ?
-    <h1>Find your favorite artists!
       <div style={{ display: "flex" }}>
         <nav
           style={{
             borderRight: "solid 1px",
             padding: "1rem",
+            width: window.innerWidth*0.15
           }}
         >
           <input
+            style={{
+              width: window.innerWidth*0.15,
+            }}
             placeholder="Filter by name"
             value={searchParams.get("filter")  || ""}
             onChange={(event) => {
@@ -47,6 +50,9 @@ const Artists = () => {
               }
             }}/>
             <input
+            style={{
+              width: window.innerWidth*0.15,
+            }}
             placeholder="Filter by genres"
             value={searchParams.get("filterAttr")  || ""}
             onChange={(event) => {
@@ -97,14 +103,14 @@ const Artists = () => {
           to={`/artists/${artist.name}`}
           key={artist._id}
         >
-          {artist.name}
+          <h1>{artist.name}</h1>
         </QueryNavLink>
       ))}
 
         </nav>
         <Outlet />
       </div>
-      </h1>
+      
     : <h1> Loading </h1>
   );
         
