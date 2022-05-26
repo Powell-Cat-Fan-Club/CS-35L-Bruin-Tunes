@@ -21,6 +21,7 @@ export default function NewComment() {
 async function submitComment(e) {
   e.preventDefault();
   const newComment = {...comment};
+  if(newComment.username != "" && newComment.comment != ""){
   await fetch("http://localhost:5000/comments/add", {
     method: "POST",
     headers: {
@@ -33,6 +34,7 @@ async function submitComment(e) {
     return;
   });
   setComment({username:"", comment: ""});
+}
 }
 
 return (
