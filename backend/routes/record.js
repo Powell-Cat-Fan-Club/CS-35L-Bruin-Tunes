@@ -354,6 +354,23 @@ recordRoutes.route("/login/update/:id").put(function (req, response) {
     response.json(obj);
   });
  });
+
+ //this route updates the user's logged in status
+ recordRoutes.route("/loggedin/:id").put(function (req, response) {
+  let db_connect = dbo.getDb(); 
+  let myquery = { _id: ObjectId( req.params.id )};
+
+  let newvalues = {   
+    $set: {
+      isloggedin: req.body.isloggedin,  
+    }, 
+   };
+  
+  db_connect.collection("Users").updateOne(myquery, newvalues, function (err, obj) {
+    if (err) throw err;
+    response.json(obj);
+  });
+ });
   
  // This section will help you delete a user
  recordRoutes.route("/login/:id").delete((req, response) => {
