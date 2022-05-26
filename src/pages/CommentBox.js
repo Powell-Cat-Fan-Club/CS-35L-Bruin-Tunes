@@ -1,28 +1,42 @@
 // CommentBox.js
-import React, { Component } from 'react';
+import React, {useEffect, useState} from 'react';  
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import DATA from './data';
 import './CommentBox.css';
 
-class CommentBox extends Component {
-  constructor() {
-    super();
-    this.state = { data: [] };
+
+
+export default function CommentBox() {
+  const [comments, setComments] = useState();
+
+  useEffect(() => {
+    async function GetComments() {
+      const response = await fetch(`http://localhost:5000/comments/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const comments = await response.json();
+      setComments(comments);
+    }
+    GetComments();
   }
-  render() {
-    return (
+  )
+    //console.log(comments);  
+
+    return(   
       <div className="container">
         <div className="comments">
           <h2>Comments:</h2>
-          <CommentList data={DATA} />
+          <CommentList data={comments} />
         </div>
         <div className="form">
           <CommentForm />
         </div>
       </div>
-    );
+    )
   }
-}
 
-export default CommentBox;

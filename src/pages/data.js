@@ -1,7 +1,7 @@
 // data.js
 const data = [
-    { _id: 1, author: 'Bryan', text: 'Wow this is neat.', updatedAt: new Date(), createdAt: new Date() },
-    { _id: 2, author: 'You', text: 'You\'re right!', updatedAt: new Date(), createdAt: new Date() },
+    { _id: 1, name: 'Bryan', comment: 'Wow this is neat.', timestamp: new Date(), createdAt: new Date() },
+    { _id: 2, name: 'You', comment: 'You\'re right!', timestamp: new Date(), createdAt: new Date() },
   ];
   
   export default data;
