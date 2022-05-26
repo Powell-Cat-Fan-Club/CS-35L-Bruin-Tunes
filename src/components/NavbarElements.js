@@ -10,7 +10,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     height: 80px;
   }
 `;
@@ -91,7 +91,7 @@ export const OpenLinksButton = styled.button`
   color: white;
   font-size: 3rem;
   cursor: pointer;
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     display: none;
   }
 `;
@@ -102,7 +102,7 @@ export const NavbarExtendedContainer = styled.div`
   align-items: center;
 
   height: auto;
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     display: none;
   }
 `;

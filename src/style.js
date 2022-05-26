@@ -10,3 +10,7 @@ export const Header = styled.h1`
     margin: 0;    
 `
 
+export const Container = styled.div`
+    justify-content: center;
+    margin: 1rem 0px 5rem;
+`

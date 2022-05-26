@@ -1,7 +1,7 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
-import { Header } from '../../style';
-import { PersonCard, PersonDescription, PersonName, PersonRole, TeamContainer, Container, WebDescription } from './aboutStyle';
+import { Container, Header } from '../../style';
+import { PersonCard, PersonDescription, PersonName, PersonRole, TeamContainer, WebDescription } from './aboutStyle';
   
 const About = () => {
   return (
@@ -11,7 +11,7 @@ const About = () => {
         <Header> Our Mission </Header>
         <WebDescription>
         Our mission as the developers behind BruinTunes is to spread the love of music to Bruins far and wide. 
-        Whether that be on the way to class, in the bowels of Boelter Hall, or just chillaxing in the dorm, 
+        Whether that be on the way to class, in YRL Floors 2-5, or just chillaxing in the dorm, 
         we hope that Bruins everywhere will find it easy and convenient to listen to and discuss their favorite music 
         with other Bruins. "We the team of BruinTunes encourage you to just take a moment from your busy lives as 
         college students and relax with our carefully curated selection of music. Sit back, relax, and scroll these 

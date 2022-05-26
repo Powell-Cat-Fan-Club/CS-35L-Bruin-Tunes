@@ -1,10 +1,5 @@
 import styled from "styled-components"
 
-export const Container = styled.div`
-    justify-content: center;
-    margin: 1rem 0px 5rem;
-`
-
 export const WebDescription = styled.p`
     color: #000;
     font-size: x-large;
@@ -34,7 +29,7 @@ export const PersonCard = styled.div`
 
     @media (max-width: 1100px) {
         width: 43%;
-        min-height: auto
+        min-height: auto;
     }
 
     @media (max-width: 800px) {

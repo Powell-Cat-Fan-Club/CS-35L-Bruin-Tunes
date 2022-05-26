@@ -3,12 +3,25 @@ shows name of artist, number of albums, genres, and links to albums
 */ 
 
 import React, {useState, useEffect} from "react";
-import { useParams, NavLink, Outlet } from "react-router-dom";
-//import '../window-dimension.js'
-  
+import { useParams, Outlet } from "react-router-dom";
+import { LeftContainer, RightContainer } from "../../components/NavbarElements";
+import { 
+  ArtistTitle,
+  Banner,
+  ContentContainer,
+  Description,
+  GenreList,
+  LeftContent,
+  MiddleText,
+  NavLink,
+  RightContent
+} from "./artistsStyle";
+
+import {  } from "./artistsStyle";
+
 export default function ArtistTemplate(){
-    let params = useParams();
-    const [artist, setArtist] = useState();
+  let params = useParams();
+  const [artist, setArtist] = useState();
 
   useEffect(() => {
     fetch (`http://localhost:5000/artists/artist/${params.artistID}`)
@@ -34,33 +47,31 @@ export default function ArtistTemplate(){
     });
   }
 
-    return (
-        artist ? (<div style={{ display: "flex" }}>
-          <nav
-          style={{
-            padding:"2rem",
-          }}
-        >
-          <img src={artist.image} width={window.innerWidth*0.4}/>
-          <h3>Artist: {artist.name}</h3>
-          <p>Info: {artist.info}</p>
-          <p>Genres: 
-          <ul>
+  return (
+    artist ? (
+      <ContentContainer>
+        <LeftContent>
+          <Banner src={artist.image} />
+          <ArtistTitle> Artist: {artist.name} </ArtistTitle>
+          <Description> {artist.info} </Description>
+          <div >
+            <Description align="left">
+            Genres: 
+            <GenreList >
             {artist.genres.map((genre) => <li key={genre}>{genre}</li>)}
-          </ul>
-          </p>
+            </GenreList>
+          </Description>
+          </div>
+          
 
           <button onClick={likeArtist}>❤️ {artist.likes} likes!</button> 
-            
-          
-          
-        </nav>
-        <nav
-          style={{
-            borderLeft: "solid 1px",
-            padding: "2rem",
-          }}
-        >
+
+        </LeftContent>
+        <RightContent>
+          <ArtistTitle>
+            Albums
+          </ArtistTitle>
+
           {(artist.albums).map((album) => (
             <NavLink
               style={{ display: "block", margin: "1rem 0" }}
@@ -70,10 +81,16 @@ export default function ArtistTemplate(){
               {album}
             </NavLink>
           ))}
-        </nav>
-        <Outlet />
-      </div>) 
-      : <h2>loading</h2>
+
+          <Outlet />
+        </RightContent>
+        
+        
+      </ContentContainer>) 
+      : 
+      <ContentContainer>
+        <MiddleText> Loading.. </MiddleText> 
+      </ContentContainer>
         
       );
 }
