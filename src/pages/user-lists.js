@@ -93,10 +93,8 @@ const UserList = () => {
 
     let arrayMutater = (val, index) => 
     {
-      if (val == null)
-      {
+      if (!val)
         val = "No artist selected";
-      }
 
       let cleanArr = form.userList;
       cleanArr[index - 1] = val;
@@ -107,11 +105,9 @@ const UserList = () => {
     let displaySelector = () => 
         {    
                 let myArr = [];
-                let cleanArr = [];
 
                 for (let index = 1; index <= artists.length; index++)
                 { 
-                    cleanArr = form.userList;
                     myArr.push(
                         <div>
                             <fieldset>
