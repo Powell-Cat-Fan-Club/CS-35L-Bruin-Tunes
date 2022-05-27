@@ -159,6 +159,7 @@ recordRoutes.route("/artists/artist/likes/:id").put(function (req, response) {
 //Note: will probably be accessed through artist pages, so prob will change route
 recordRoutes.route("/comments").get(function (req, res) {
   let db_connect = dbo.getDb("BruinTunes");
+
   db_connect
     .collection("Comments")
     .find({})
@@ -167,6 +168,7 @@ recordRoutes.route("/comments").get(function (req, res) {
       res.json(result);
     }); 
 });
+
 
 //change the routing once comments implemented
 //Gets comment by ID
@@ -187,10 +189,10 @@ recordRoutes.route("/comments/add").post(function (req, response) {
   let db_connect = dbo.getDb("BruinTunes");
   let myobj = {
     username: req.body.username,
-    title: req.body.title,
     comment: req.body.comment,
-    likes: req.body.likes,
+    timestamp: new Date()
   };
+  console.log(myobj);
   db_connect.collection("Comments").insertOne(myobj, function (err, res) {
     if (err) throw err;
     response.json(res);
@@ -205,9 +207,8 @@ recordRoutes.route("/comments/update/:id").put(function (req, response) {
   let newvalues = {   
     $set: {     
       username: req.body.username,    
-      title: req.body.title,     
       comment: req.body.comment, 
-      likes: req.body.likes,  
+      timestamp: new Date()
     }, 
    };
   
@@ -346,6 +347,23 @@ recordRoutes.route("/login/update/:id").put(function (req, response) {
     $set: {     
       username: req.body.username,    
       password: req.body.password,
+    }, 
+   };
+  
+  db_connect.collection("Users").updateOne(myquery, newvalues, function (err, obj) {
+    if (err) throw err;
+    response.json(obj);
+  });
+ });
+
+ //this route updates the user's logged in status
+ recordRoutes.route("/loggedin/:id").put(function (req, response) {
+  let db_connect = dbo.getDb(); 
+  let myquery = { _id: ObjectId( req.params.id )};
+
+  let newvalues = {   
+    $set: {
+      isloggedin: req.body.isloggedin,  
     }, 
    };
   

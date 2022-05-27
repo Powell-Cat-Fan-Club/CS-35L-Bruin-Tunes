@@ -1,6 +1,7 @@
 //credit for the responsive navbar: https://github.com/machadop1407/styled-components-responsive-navbar
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {isLoggedIn} from '../pages/pagesLOGIN/finduser.js';
 import {
   NavbarContainer,
   LeftContainer,
@@ -15,9 +16,52 @@ import {
   NavbarLinkExtended,
 } from "./NavbarElements.js";
 import LogoImg from "../images/cat.svg";
+import { render } from "@testing-library/react";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
+
+  const [users, setUsers] = useState();
+  
+    useEffect(() => {
+      async function getUsers() {
+        const response = await fetch(`http://localhost:5000/login/`);
+  
+        if (!response.ok) {
+          const message = `An error occurred: ${response.statusText}`;
+          window.alert(message);
+          return;
+        }
+        const users = await response.json();
+        setUsers(users);
+    }
+    getUsers();
+    });
+    var login = isLoggedIn(users); 
+    const text = (login != undefined) ? 'Log Out' : 'Log In';
+    
+    function logOutOnClick() {
+      async function logOut()
+      {
+        if (login == undefined) {
+          return; 
+        }
+        await fetch(`http://localhost:5000/loggedin/${login._id}`, {
+          method: "PUT", 
+          headers: {
+            "Content-Type": "application/json",
+          }, 
+          body: JSON.stringify({isloggedin: false})
+        })
+        .catch (error => {
+          window.alert(error);
+          return;
+        });
+
+        window.alert("Successfully Logged Out."); 
+      }
+      logOut(); 
+    }
 
   return (
     <NavbarContainer extendNavbar={extendNavbar}>
@@ -36,7 +80,7 @@ function Navbar() {
             <NavbarLink to="/charts"> Charts </NavbarLink>
             <NavbarLink to="/userlist"> Lists </NavbarLink>
             <NavbarLink to="/about"> About us! </NavbarLink>
-            <NavbarLink to="/login"> Sign In </NavbarLink>
+            <NavbarLink to="/login" onClick={logOutOnClick}> {text} </NavbarLink>
             <OpenLinksButton
               onClick={() => {
                 setExtendNavbar((curr) => !curr);
@@ -55,7 +99,7 @@ function Navbar() {
           <NavbarLinkExtended to="/charts"> Charts </NavbarLinkExtended>
           <NavbarLinkExtended to="/userlist"> Lists </NavbarLinkExtended>
           <NavbarLinkExtended to="/about"> About us! </NavbarLinkExtended>
-          <NavbarLinkExtended to="/login" as="button"> Sign In </NavbarLinkExtended>
+          <NavbarLinkExtended to="/login" as="button" onClick={logOutOnClick}> {text} </NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>

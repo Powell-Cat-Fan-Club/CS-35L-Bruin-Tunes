@@ -24,25 +24,27 @@ const Albums = () => {
           <nav
           style={{
             padding:"2rem",
+            width: window.innerWidth*0.6,
           }}
         >
-          <h2>Album name: {album.name}</h2>
+          <h1>Album name: {album.name}</h1>
           <p>
-            Release date: {album.date}
+            <h2>Release date: </h2>{album.date}
           </p>
           </nav>
           <nav style={{
             padding:"2rem",
-            borderLeft: "solid 1px"
+            borderLeft: "solid 1px",
+            maxWidth: window.innerWidth * 0.2
           }}>
-          <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
+          <NavLink to={`/artists/${params.artistID}`}> <h1>Back</h1> </NavLink>
         {(album.songs).map((song) => (
             <NavLink
               style={{ display: "block", margin: "1rem 0" }}
               to={`/artists/${params.artistID}/${album.name}/${song}`}
               key={song}
             >
-              {song}
+              <h1>{song}</h1>
             </NavLink>
           ))}
         </nav>

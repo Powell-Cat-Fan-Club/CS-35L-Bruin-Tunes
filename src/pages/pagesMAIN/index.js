@@ -9,7 +9,7 @@ const Home = () => {
     <HomeBackground>
       <TitleContainer>
         <Header>Welcome to BruinTunes</Header>
-        <Description> <b>The baby of Spotify or Reddit? Someone think of something else Q_Q</b> </Description>
+        <Description> A Streaming Site Made Exclusively For Bruins </Description>
       </TitleContainer>
       
       <LinksContainer>

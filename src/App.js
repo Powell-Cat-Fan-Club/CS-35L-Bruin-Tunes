@@ -32,6 +32,15 @@ return (
         <Route exact path='/' element={<Home />} /> 
         <Route path='about' element={<About/>} />
         <Route path='artists' element={<Artists/>} >
+          <Route
+            index
+            element={
+              <main style={{ padding: "2rem", alignContent:"center" }}>
+                <h1>Select an artist!</h1>
+                <img src="http://assets.stickpng.com/images/59fcaf1e7468e4bdbe0b1411.png" width="200px"/>
+              </main>
+            }
+          />
           <Route path=':artistID' element={<ArtistTemplate/>} />
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>
