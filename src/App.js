@@ -8,9 +8,6 @@ import Home from './pages/pagesMAIN';
 import About from './pages/pagesABOUT/about';
 
 import CommentBox from './pages/CommentBox';
-import CommentForm from './pages/CommentForm';
-import CommentList from './pages/CommentList';
-import Comment from './pages/Comment';
 
 import Charts from './pages/charts';
 
@@ -23,6 +20,7 @@ import Login from './pages/pagesLOGIN/login'
 import SignUp from './pages/pagesLOGIN/signup';
 
 import UserList from './pages/user-lists';
+import { ContentContainer, MiddleText } from './pages/pagesARTISTS/artistsStyle';
   
 function App() {
 return (
@@ -32,15 +30,13 @@ return (
         <Route exact path='/' element={<Home />} /> 
         <Route path='about' element={<About/>} />
         <Route path='artists' element={<Artists/>} >
-          <Route
-            index
-            element={
-              <main style={{ padding: "2rem", alignContent:"center" }}>
-                <h1>Select an artist!</h1>
-                <img src="http://assets.stickpng.com/images/59fcaf1e7468e4bdbe0b1411.png" width="200px"/>
-              </main>
-            }
-          />
+          <Route index element={
+              <ContentContainer>
+                <MiddleText>
+                  Find your favorite artists!
+                </MiddleText>
+              </ContentContainer>
+          }/>
           <Route path=':artistID' element={<ArtistTemplate/>} />
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>

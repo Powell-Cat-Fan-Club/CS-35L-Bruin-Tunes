@@ -22,7 +22,6 @@ function QueryNavLink( {to, ...props}) {
 }
   
 const Artists = () => {
-  //let artists = getArtists();
   let [searchParams, setSearchParams] = useSearchParams();
   const [artists, setArtists] = useState([]);
 
@@ -72,7 +71,31 @@ const Artists = () => {
         </SearchDiv>
         <ArtistList>
           {artists
-            
+            .filter((artist) => {
+              let filter = searchParams.get("filter");
+              let filterAttr = searchParams.get("filterAttr")
+              let matches = [];
+              if (!filter & !filterAttr) return true;
+              let name = artist.name.toLowerCase();
+              let attr = artist.genres;
+              for (let i = 0; i<attr.length; i++)
+              {
+                attr[i] = attr[i].toLowerCase();
+              }
+              if (filterAttr)
+              {
+                for (let i = 0; i<attr.length; i++)
+                {
+                  if (attr[i].startsWith(filterAttr.toLowerCase())) matches.push(attr[i]);
+                }
+              }
+              console.log(matches);
+              if (filter & filterAttr) return name.startsWith(filter.toLowerCase()) | matches.length!==0;
+              console.log(matches.length!==0);
+              if (!filter) return matches.length!==0;
+              if (!filterAttr) return name.startsWith(filter.toLowerCase());
+              return false;
+            })
 
             .map((artist) => (
               <QueryNavLink 
@@ -94,5 +117,4 @@ const Artists = () => {
   );
 };
   
-//<MiddleText> Find your favorite artists! </MiddleText>
 export default Artists;

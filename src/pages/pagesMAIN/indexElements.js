@@ -40,7 +40,7 @@ export const NavLink = styled(Link)`
     text-decoration: none;
     text-align: center;
 
-    width: 20%;
+    width: 25%;
     padding: .5rem;
     align-items: center;
     margin: 0 10px; 

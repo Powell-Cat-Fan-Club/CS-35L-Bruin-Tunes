@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 import { Header } from '../../style';
-import { getByTitle } from "@testing-library/react";
 
 export const ArtContainer = styled.div`
     display: flex;
     min-height: 100vh;
     align-items: stretch;
-
 `
 
 export const SearchColumn = styled.div`
@@ -20,7 +18,6 @@ export const SearchColumn = styled.div`
     align-items: flex-start;
     
 `
-
 export const SearchDiv = styled.div`
     width: 100%;
     display: flex;
@@ -53,7 +50,6 @@ export const SearchBar = styled.input`
     border: none;
     width: 0;
 `
-
 export const ArtistList = styled.nav`
     width: 100%;
     display: flex;
@@ -83,19 +79,19 @@ export const ContentContainer = styled.div`
 
     display: flex;
     justify-content: center;
-    
+    flex-direction: ${props => props.align || "default"};
 `
 export const MiddleText = styled(Header)`
     margin-top: 10rem;
 `
 
 export const LeftContent = styled.div`
-    width: 85%;
+    width: ${props => props.width || "82%"};
     margin: 1rem;
     justify-content: center;
 `
 export const RightContent = styled.nav`
-    width: 10%;
+    width: 18%;
     border-left: solid 1px;
     padding: 0px .9rem;
 
@@ -109,7 +105,7 @@ export const Banner = styled.img`
     width: 100%;
     height: auto;
 `
-export const ArtistTitle = styled.h2`
+export const Title = styled.h2`
     color: #000;
     font-size: x-large;
     font-family: Arial, Helvetica, sans-serif;
@@ -127,6 +123,27 @@ export const Description = styled.p`
     margin: .5rem;
     
 `
+export const MiniBox = styled(ArtContainer)`
+    min-height: auto;
+    align-items: center;
+`
+export const LikeButton = styled.button`
+    color: Black;
+    font-size: x-large; 
+    font-family: Arial, Helvetica, sans-serif;  
+    text-decoration: none;
+    text-align: center;
+
+    width: 100%;
+    padding: .2rem .5rem;
+    align-self: center;
+    margin: 0px; 
+
+    background-color: #55c1ff;
+    border-radius: 10px;
+    border: 1px solid #16425b;
+    cursor: pointer;
+`
 export const GenreList = styled.ul`
     color: #000;
     font-size: normal;
@@ -136,13 +153,8 @@ export const GenreList = styled.ul`
 
     margin: 0px;
 `
-
-export const LikeButton = styled.div`
-    
-`
-
-export const AlbumTitle= styled.div`
-    
+export const GenreItem = styled.li`
+    margin-left: -0.75rem;
 `
 
 
@@ -150,3 +162,6 @@ export const AlbumTitle= styled.div`
 
 
 
+
+// the moving text box https://stackoverflow.com/questions/49085878/how-to-make-input-inside-flexbox-size-to-available-space
+// the shrinkign of the space between the lists

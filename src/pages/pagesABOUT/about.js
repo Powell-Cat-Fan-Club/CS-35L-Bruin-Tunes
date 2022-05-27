@@ -57,7 +57,7 @@ const About = () => {
             <PersonName> Brandon Tran </PersonName>
             <PersonRole> Frontend Developer </PersonRole>
             <PersonDescription>
-              Designed the Comments page <u>&#40;or attempted&#41;</u>
+              Designed the Comments page
             </PersonDescription>
           </PersonCard>
         </TeamContainer>
