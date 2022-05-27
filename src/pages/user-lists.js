@@ -27,7 +27,7 @@ const UserList = () => {
 
 
     const [form, setForm] = useState({
-        username: "",
+        username: "No username selected",
         userList: []
       });
       const navigate = useNavigate();
@@ -54,7 +54,7 @@ const UserList = () => {
         return;
       });
     
-      setForm({username:"", userList:new Array(artists.length).fill(null)});
+      setForm({username:"No username selected", userList:new Array(artists.length).fill(null)});
       navigate("/userlist");
     }
 
@@ -127,7 +127,7 @@ const UserList = () => {
                 return (
                 <form onSubmit={onSubmit}>
                     <label><input type="text" name="name" id="name" placeholder="Your name"
-                    onChange={(e) => e.target.value != "" ? updateForm({ username: e.target.value}) : updateForm({username: "No username entered"})} /></label>
+                    onChange={(e) => e.target.value != "" ? updateForm({ username: e.target.value}) : updateForm({username: "No username selected"})} /></label>
                     {myArr}
                     <button type="submit">Submit</button>
                 </form>
