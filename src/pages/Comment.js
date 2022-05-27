@@ -10,9 +10,9 @@ const Comment = props => (
     <img alt="user_image" className="userImage" src={`https://picsum.photos/70?random=${props.id}`} />
     <div className="textContent">
       <div className="singleCommentContent">
-        <h3>{props.author}</h3>
-        <p>{props.children}</p>
-        <ReactMarkdown source={props.children} />
+        <h3>{props.name}</h3>
+        <p>{props.comment}</p>
+        <ReactMarkdown source={props.comment} />
       </div>
       <div className="singleCommentButtons">
       </div>
@@ -21,9 +21,8 @@ const Comment = props => (
 );
 
 Comment.propTypes = {
-  author: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
 };
 
 export default Comment;
