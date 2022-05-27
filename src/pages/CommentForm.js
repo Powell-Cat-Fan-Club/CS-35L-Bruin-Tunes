@@ -22,19 +22,18 @@ async function submitComment(e) {
   e.preventDefault();
   const newComment = {...comment};
   if(newComment.username != "" && newComment.comment != ""){
-  await fetch("http://localhost:5000/comments/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    }, 
-    body: JSON.stringify(newComment),
-  })
-  .catch (error => {
-    window.alert(error);
-    return;
-  });
-  setComment({username:"", comment: ""});
-}
+    await fetch("http://localhost:5000/comments/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify(newComment),
+    })
+    .catch (error => {
+      window.alert(error);
+      return;
+    });
+  }
 }
 
 return (
