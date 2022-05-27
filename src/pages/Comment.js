@@ -11,6 +11,7 @@ const Comment = props => (
     <div className="textContent">
       <div className="singleCommentContent">
         <h3>{props.name}</h3>
+        <h4>{props.time.substring(0, 10)}</h4>
         <p>{props.comment}</p>
         <ReactMarkdown source={props.comment} />
       </div>
@@ -23,6 +24,7 @@ const Comment = props => (
 Comment.propTypes = {
   name: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
 };
 
 export default Comment;
