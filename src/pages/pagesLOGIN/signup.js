@@ -1,12 +1,13 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
-import React, {useState} from 'react';
-
+import React, {useEffect, useState} from 'react';
+import {findUsername} from './finduser.js';
 import { useNavigate } from "react-router";
 
 export default function SignUp() {
   const [form, setForm] = useState({
     username: "",
     password: "",
+    isloggedin: false,
     likes: [],
     comments: [],
   });
@@ -17,11 +18,38 @@ export default function SignUp() {
       return {...prev, ...value};
     });
   }
-
+  const [users, setUsers] = useState();
+  
+    useEffect(() => {
+      async function getUsers() {
+        const response = await fetch(`http://localhost:5000/login/`);
+  
+        if (!response.ok) {
+          const message = `An error occurred: ${response.statusText}`;
+          window.alert(message);
+          return;
+        }
+        const users = await response.json();
+        setUsers(users);
+    }
+    getUsers();
+  });
 
 async function onSubmit(e) {
   e.preventDefault();
   const newUser = {...form};
+
+  //check for duplicates
+  var usernameUsed = findUsername(newUser.username, users);
+  console.log(usernameUsed)
+  if(usernameUsed != undefined) {
+    document.getElementById("signup").innerHTML="Sorry, that username has been taken.";
+  }
+  else{
+    document.getElementById("signup").innerHTML="Account created.";
+  }
+
+  //add user
   await fetch("http://localhost:5000/login/add", {
     method: "POST",
     headers: {
@@ -34,12 +62,14 @@ async function onSubmit(e) {
     return;
   });
 
-  setForm({username:"", password:"", likes: [], comments: []});
-  navigate("/");
+  setForm({username:"", password:"", isloggedin: false, likes: [], comments: []});
+  //console.log(newUser.isloggedin);
+  //navigate("/login");
 }
   return(
   <div>
      <h3>Sign up!</h3>
+     <h4 id="signup"></h4>
      <form onSubmit={onSubmit}>
        <div className="form-group">
          <label htmlFor="username">Username</label>
@@ -48,7 +78,7 @@ async function onSubmit(e) {
            className="form-control"
            id="username"
            value={form.username}
-           onChange={(e) => updateForm({ username: e.target.value, comments:[], likes:[] })}
+           onChange={(e) => updateForm({ username: e.target.value, isloggedin: false, comments:[], likes:[] })}
          />
        </div>
        <div className="form-group">
@@ -72,8 +102,6 @@ async function onSubmit(e) {
    </div>
  );
 }
-
-
 
 // export default function SignUp() {
 //   function btnOnClick() {  

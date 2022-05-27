@@ -1,40 +1,24 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React, {useEffect, useState} from 'react';  
-//import {findUser} from './userinfo_TEMP';
+import {findUser} from './finduser.js';
   
 export default function Login() {
   const [users, setUsers] = useState();
-
-  useEffect(() => {
-    async function getUsers() {
-      const response = await fetch(`http://localhost:5000/login/`);
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-      const users = await response.json();
-      setUsers(users);
+  
+    useEffect(() => {
+      async function getUsers() {
+        const response = await fetch(`http://localhost:5000/login/`);
+  
+        if (!response.ok) {
+          const message = `An error occurred: ${response.statusText}`;
+          window.alert(message);
+          return;
+        }
+        const users = await response.json();
+        setUsers(users);
     }
-
     getUsers();
-    //console.log(users);  
-
-    return;
-  });
-
-  function findUser(userID, passID)
-  {
-    for (var i = 0; i<users.length; i++)
-    {
-      if (users[i].password === passID & users[i].username === userID)
-      {
-        return users[i];
-      }
-    }
-    return undefined;
-  }
-
+    });
   function logOnClick(){
     var eleERROR = document.getElementById('errorTXT'); 
   
@@ -50,11 +34,28 @@ export default function Login() {
       return;
     }
   
-    var searchUser = findUser(User, Pass);
+    var searchUser = findUser(User, Pass, users);
     if (typeof(searchUser)=="undefined" ) {
       eleERROR.innerHTML = 'Invalid Username or Password';
-      console.log("fuck you");
       return;
+    }
+    else {
+      async function updateLogin()
+      {
+        await fetch(`http://localhost:5000/loggedin/${searchUser._id}`, {
+          method: "PUT", 
+          headers: {
+            "Content-Type": "application/json",
+          }, 
+          body: JSON.stringify({isloggedin: true})
+        })
+        .catch (error => {
+          window.alert(error);
+          return;
+        });
+      }
+
+      updateLogin(); 
     }
 
     window.location.href = "/";
@@ -85,35 +86,3 @@ export default function Login() {
     </div>
   );
 };
-
-const hmtl4Login = `
-  <script type="text/JavaScript">
-    function logOnClick() {  
-      var eleERROR = document.getElementById('errorTXT'); 
-
-      var User = document.getElementById('nameL').value;
-      if (!User) {
-        eleERROR.innerHTML = 'Enter a Username';
-        return;
-      }
-    
-      var Pass = document.getElementById('passwordL').value;
-      if (!Pass) {
-        eleERROR.innerHTML = 'Enter a Password';
-        return;
-      }
-
-      var searchUser = findUser(newUser);
-      if (!searchUser || searchUser.password !== Pass) {
-        eleERROR.innerHTML = 'Invalid Username or Password';
-        return;
-      }
-        
-      //redirect to home
-    }       
-  </script>
-`
-
-
-
-//You have entered an invalid Username or Password.
