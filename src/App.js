@@ -3,20 +3,24 @@ import './App.css';
 import Navbar from './components';
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
+
 import Home from './pages/pagesMAIN';
-import Artists from './pages/artists';
-import CommentBox from './pages/CommentBox';
-import CommentForm from './pages/CommentForm';
-import CommentList from './pages/CommentList';
-import Comment from './pages/Comment';
 import About from './pages/pagesABOUT/about';
+
+import CommentBox from './pages/CommentBox';
+
 import Charts from './pages/charts';
-import ArtistTemplate from './pages/artist-template';
-import Albums from './pages/albums';
-import Login from './pages/pagesLOGIN/login';
+
+import Artists from './pages/pagesARTISTS/artists';
+import ArtistTemplate from './pages/pagesARTISTS/artists-template';
+import Albums from './pages/pagesARTISTS/albums';
+import Songs from './pages/pagesARTISTS/songs';
+
+import Login from './pages/pagesLOGIN/login'
 import SignUp from './pages/pagesLOGIN/signup';
-import Songs from './pages/songs';
+
 import UserList from './pages/user-lists';
+import { ContentContainer, MiddleText } from './pages/pagesARTISTS/artistsStyle';
   
 function App() {
 return (
@@ -26,15 +30,13 @@ return (
         <Route exact path='/' element={<Home />} /> 
         <Route path='about' element={<About/>} />
         <Route path='artists' element={<Artists/>} >
-          <Route
-            index
-            element={
-              <main style={{ padding: "2rem", alignContent:"center" }}>
-                <h1>Select an artist!</h1>
-                <img src="http://assets.stickpng.com/images/59fcaf1e7468e4bdbe0b1411.png" width="200px"/>
-              </main>
-            }
-          />
+          <Route index element={
+              <ContentContainer>
+                <MiddleText>
+                  Find your favorite artists!
+                </MiddleText>
+              </ContentContainer>
+          }/>
           <Route path=':artistID' element={<ArtistTemplate/>} />
           <Route path=':artistID/:albumID' element={<Albums/>}/>
           <Route path=':artistID/:albumID/:songID' element={<Songs/>}/>

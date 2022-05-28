@@ -1,23 +1,23 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
-import { Header } from '../../style';
-import { PersonCard, PersonDescription, PersonName, PersonRole, TeamContainer, Container } from './aboutStyle';
+import { Container, Header } from '../../style';
+import { PersonCard, PersonDescription, PersonName, PersonRole, TeamContainer, WebDescription } from './aboutStyle';
   
 const About = () => {
   return (
     <div>
+      <br/>
       <Container> 
         <Header> Our Mission </Header>
-        <p>
+        <WebDescription>
         Our mission as the developers behind BruinTunes is to spread the love of music to Bruins far and wide. 
-        Whether that be on the way to class, in the bowels of Boelter Hall, or just chillaxing in the dorm, 
+        Whether that be on the way to class, in YRL Floors 2-5, or just chillaxing in the dorm, 
         we hope that Bruins everywhere will find it easy and convenient to listen to and discuss their favorite music 
         with other Bruins. "We the team of BruinTunes encourage you to just take a moment from your busy lives as 
         college students and relax with our carefully curated selection of music. Sit back, relax, and scroll these 
         pictures of Powell cat."
-        </p>
+        </WebDescription>
       </Container>
-
       <Container>
         <Header> The Powell Cat Fan Club Team</Header>
         <TeamContainer>
@@ -57,15 +57,14 @@ const About = () => {
             <PersonName> Brandon Tran </PersonName>
             <PersonRole> Frontend Developer </PersonRole>
             <PersonDescription>
-              Designed the Comments page <u>&#40;or attempted&#41;</u>
+              Designed the Comments page
             </PersonDescription>
           </PersonCard>
         </TeamContainer>
       </Container>
-
       <Container>
         <Header> Pictures of Powell Cat Collected over the Duration of the project</Header>
-        <p> Does not exist yet because fuck me</p>
+        <WebDescription> Does not exist yet because fuck me </WebDescription>
       </Container>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from 'react';
-import { getArtists } from "./artist-data";
 import { useState, useEffect } from 'react';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 const UserList = () => {

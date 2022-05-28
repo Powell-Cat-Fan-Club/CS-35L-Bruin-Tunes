@@ -17,7 +17,6 @@ const Home = () => {
         <NavLink to="/comments"> Comments </NavLink>
         <NavLink to="/charts"> Charts </NavLink>
         <NavLink to="/userlist"> Lists </NavLink>
-        <NavLink to="/login"> Sign In </NavLink>
       </LinksContainer>
     </HomeBackground>
   );
