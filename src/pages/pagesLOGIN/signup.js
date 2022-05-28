@@ -1,7 +1,6 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React, {useEffect, useState} from 'react';
 import {findUsername} from './finduser.js';
-import { useNavigate } from "react-router";
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -11,7 +10,6 @@ export default function SignUp() {
     likes: [],
     comments: [],
   });
-  const navigate = useNavigate();
 
   function updateForm(value) {
     return setForm((prev) => {
@@ -41,30 +39,34 @@ async function onSubmit(e) {
 
   //check for duplicates
   var usernameUsed = findUsername(newUser.username, users);
-  console.log(usernameUsed)
   if(usernameUsed != undefined) {
     document.getElementById("signup").innerHTML="Sorry, that username has been taken.";
   }
+  else if (newUser.username.length == 0) {
+    document.getElementById("signup").innerHTML="Please enter in a valid username.";
+  }
+  else if (newUser.password.length == 0) {
+    document.getElementById("signup").innerHTML="Please enter in a valid password.";
+  }
   else{
     document.getElementById("signup").innerHTML="Account created.";
+
+    //add user
+    await fetch("http://localhost:5000/login/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+      body: JSON.stringify(newUser),
+    })
+    .catch (error => {
+      window.alert(error);
+      return;
+    });
+
+    setForm({username:"", password:"", isloggedin: false, likes: [], comments: []});
+
   }
-
-  //add user
-  await fetch("http://localhost:5000/login/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    }, 
-    body: JSON.stringify(newUser),
-  })
-  .catch (error => {
-    window.alert(error);
-    return;
-  });
-
-  setForm({username:"", password:"", isloggedin: false, likes: [], comments: []});
-  //console.log(newUser.isloggedin);
-  //navigate("/login");
 }
   return(
   <div>
