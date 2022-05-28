@@ -45,7 +45,7 @@ const Albums = () => {
             <NavLink
               style={{ display: "block", margin: "1rem 0" }}
               to={`/artists/${params.artistID}/${album.name}/${song}`}
-              key={song}
+              key={song + album.name}
             >
               <h1>{song}</h1>
             </NavLink>

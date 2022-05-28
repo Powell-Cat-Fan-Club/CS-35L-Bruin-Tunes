@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Comment from './Comment';
 const CommentList = (props) => {
   const commentNodes = props.data.map(comment => (
-    <Comment name={comment.username} key={comment._id} id={comment._id} comment={comment.comment}>
+    <Comment name={comment.username} key={comment._id} id={comment._id} comment={comment.comment} time={comment.timestamp}>
          {comment.comment}
     </Comment>
   ));
@@ -21,6 +21,7 @@ CommentList.propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
     comment: PropTypes.string,
+    time: PropTypes.string,
   })),
 };
 
