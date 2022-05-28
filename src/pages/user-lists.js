@@ -26,7 +26,7 @@ const UserList = () => {
 
 
     const [form, setForm] = useState({
-        username: "",
+        username: "No username selected",
         userList: []
       });
       const navigate = useNavigate();
@@ -53,7 +53,7 @@ const UserList = () => {
         return;
       });
     
-      setForm({username:"", userList:[]});
+      setForm({username:"No username selected", userList:new Array(artists.length).fill(null)});
       navigate("/userlist");
     }
 
@@ -74,6 +74,7 @@ const UserList = () => {
         <div>{theArr}</div>
       )
     }
+    
     let displayLists = () => 
     {   
       return (
@@ -87,9 +88,23 @@ const UserList = () => {
         </div> 
       )
     }
+
+
+    let arrayMutater = (val, index) => 
+    {
+      if (!val)
+        val = "No artist selected";
+
+      let cleanArr = form.userList;
+      cleanArr[index - 1] = val;
+      form.userList = cleanArr;
+      updateForm({userList: cleanArr});
+    }
+
     let displaySelector = () => 
         {    
                 let myArr = [];
+
                 for (let index = 1; index <= artists.length; index++)
                 { 
                     myArr.push(
@@ -99,18 +114,19 @@ const UserList = () => {
                             {artists.map((artist) => 
                             <div>
                                 <label><input type="radio" id={artist.name} name={index} value={artist.name}
-                                onChange={(e) => updateForm({userList: [...form.userList, e.target.value] })} />{artist.name}</label>
+                                onChange={(e) => arrayMutater(e.target.value, index)} />{artist.name}</label>
                             </div>)
                             }
                             </fieldset>
                         </div>
                     )
+ 
                 }   
 
                 return (
                 <form onSubmit={onSubmit}>
                     <label><input type="text" name="name" id="name" placeholder="Your name"
-                    onChange={(e) => updateForm({ username: e.target.value})} /></label>
+                    onChange={(e) => e.target.value != "" ? updateForm({ username: e.target.value}) : updateForm({username: "No username selected"})} /></label>
                     {myArr}
                     <button type="submit">Submit</button>
                 </form>
