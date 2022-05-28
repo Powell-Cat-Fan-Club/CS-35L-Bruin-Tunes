@@ -383,4 +383,16 @@ recordRoutes.route("/login/update/:id").put(function (req, response) {
   });
  });
 
+//gets the logged in user
+recordRoutes.route("/loggedinuser").get(function (req, res) {
+  let db_connect = dbo.getDb("BruinTunes");
+  let myquery = { isloggedin : true};
+  db_connect
+      .collection("Users")
+      .findOne(myquery, function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+});
+
 module.exports = recordRoutes;

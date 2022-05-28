@@ -1,7 +1,6 @@
 //credit for the responsive navbar: https://github.com/machadop1407/styled-components-responsive-navbar
 
 import React, { useState, useEffect } from "react";
-import {isLoggedIn} from '../pages/pagesLOGIN/finduser.js';
 import {
   NavbarContainer,
   LeftContainer,
@@ -21,32 +20,31 @@ import { render } from "@testing-library/react";
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
 
-  const [users, setUsers] = useState();
+  const [user, setUser] = useState();
   
     useEffect(() => {
-      async function getUsers() {
-        const response = await fetch(`http://localhost:5000/login/`);
+      async function getUser() {
+        const response = await fetch(`http://localhost:5000/loggedinuser`);
   
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
           window.alert(message);
           return;
         }
-        const users = await response.json();
-        setUsers(users);
+        const user = await response.json();
+        setUser(user);
     }
-    getUsers();
-    });
-    var login = isLoggedIn(users); 
-    const text = (login != undefined) ? 'Log Out' : 'Log In';
+    getUser();
+    }); 
+    const text = (user != null) ? 'Log Out' : 'Log In';
     
     function logOutOnClick() {
       async function logOut()
       {
-        if (login == undefined) {
+        if (user == null) {
           return; 
         }
-        await fetch(`http://localhost:5000/loggedin/${login._id}`, {
+        await fetch(`http://localhost:5000/loggedin/${user._id}`, {
           method: "PUT", 
           headers: {
             "Content-Type": "application/json",
