@@ -9,7 +9,13 @@ import { useParams } from "react-router-dom";
 import Youtube from "react-youtube";
 
 import { useState, useEffect } from 'react';
-import { ContentContainer, LeftContent, NavLink, Title } from './artistsStyle';
+import { 
+  ContentContainer, 
+  LeftContent, 
+  MiddleText,
+  NavLink, 
+  Title 
+} from './artistsStyle';
 
   
 
@@ -91,7 +97,10 @@ const Songs = () => {
       </LeftContent>
     </ContentContainer>
     : 
-    <ContentContainer> Loading... {Content()} </ContentContainer>
+    <ContentContainer>
+      <MiddleText> Loading... </MiddleText> 
+      {Content()}
+    </ContentContainer>
   );
 }
 

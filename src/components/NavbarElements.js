@@ -1,38 +1,31 @@
 //credit for the base for responsive navbar: https://github.com/machadop1407/styled-components-responsive-navbar
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
+import { DivContainer, NavContainer } from "../style"
 
-export const NavbarContainer = styled.nav`
+export const NavbarContainer = styled(NavContainer)`
   height: ${(props) => (props.extendNavbar ? "auto" : "80px")};
   background-color: #2774AE;
-  
-  display: flex;
-  flex-direction: column;
 
   @media (min-width: 801px) {
     height: 80px;
   }
 `;
 
-export const LeftContainer = styled.div`
+export const LeftContainer = styled(DivContainer)`
   flex: 30%;
-  display: flex;
   align-items: stretch;
 `;
 
 export const RightContainer = styled(LeftContainer)`
+  flex: 70%;
   justify-content: flex-end;
 `;
 
-export const NavbarInnerContainer = styled.div`
+export const NavbarInnerContainer = styled(DivContainer)`
   width: 100%;
   height: 80px;
-  display: flex;
-`;
-
-export const NavbarLinkContainer = styled.div`
-  display: flex;
 `;
 
 export const NavbarLogo = styled(Link)`
@@ -47,7 +40,6 @@ export const NavbarLogo = styled(Link)`
   padding: 0 .5rem;
   height: 100%;
   cursor: pointer;
-
 `;
 
 export const NavbarLink = styled(NavbarLogo)`
@@ -58,7 +50,12 @@ export const NavbarLink = styled(NavbarLogo)`
 
   padding: 0 1rem;
 
-  /* not what I wanted */
+  &:hover {
+    background-color: #e6007e;
+  }
+  &:active{
+    background-color: #e6007e;
+  }
 
   @media (max-width: 800px) {
     display: none;
@@ -66,12 +63,9 @@ export const NavbarLink = styled(NavbarLogo)`
 `;
 
 
-export const NavbarLinkExtended = styled(Link)`
-  color: white;
+export const NavbarLinkExtended = styled(NavbarLink)`
   font-size: x-large;
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  text-align: center;
+  display: flex;
   margin: 10px 0;
 `;
 
@@ -96,12 +90,9 @@ export const OpenLinksButton = styled.button`
   }
 `;
 
-export const NavbarExtendedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+export const NavbarExtendedContainer = styled(NavContainer)`
   height: auto;
+  align-items: center;
   @media (min-width: 801px) {
     display: none;
   }

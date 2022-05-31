@@ -1,18 +1,26 @@
 import styled from "styled-components"
+import { DivContainer as Container} from "../../style"
+
+export const DivContainer = styled(Container)`
+    width: 100%;
+    flex-direction: column;
+    margin: 1rem 0px; 
+`
 
 export const WebDescription = styled.p`
     color: #000;
     font-size: x-large;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    margin: 1rem 5rem 0px;  
+    text-align: center;
+    margin: .5rem 5rem 0px;  
 `
 
-export const TeamContainer = styled.div`
-    display: flex;
+export const TeamContainer = styled(DivContainer)`
     justify-content: center;
     flex-flow: row wrap;
     align-items: flex-start;
+    margin: 0px;
 `
 
 export const PersonCard = styled.div`
@@ -20,7 +28,7 @@ export const PersonCard = styled.div`
     min-height: 180px;
     padding: .5rem;
     align-items: center;
-    margin: 10px 10px; 
+    margin: .5rem; 
 
     background-color: #55c1ff;
     border-radius: 5px;
@@ -47,18 +55,6 @@ export const PersonName = styled.h4`
     margin: 20px 5px 0px 5px;
 `
 
-export const PersonRole = styled.p`
-    color: Black;
-    font-size: normal; /* not set */
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
-    text-decoration: none;
-    text-align: center;
-
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-`
-
 export const PersonDescription = styled.p`
     color: Black;
     font-size: normal; /* not set */
@@ -66,6 +62,26 @@ export const PersonDescription = styled.p`
     text-decoration: none;
     text-align: center;
 
-    height: auto;
-    margin: 20px 5px;
+    margin-top: 20px;
+`
+
+export const PersonRole = styled(PersonDescription)`
+    margin: 5px;
+`
+
+export const Gallery = styled(DivContainer)`
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: .5rem;
+`
+
+export const Image = styled.img`
+    margin: .5rem;
+    width: 17%;
+
+    border-radius: 5px;
+    border: 1px solid #16425b;
+    box-shadow: 0px 0px 10px 1px #cccccc;iss
+
 `

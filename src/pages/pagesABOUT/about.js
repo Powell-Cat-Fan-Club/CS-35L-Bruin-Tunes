@@ -1,13 +1,32 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/ 
+//credit for gallery https://www.codegrepper.com/code-examples/javascript/How+to+load+all+images+in+a+folder+react
 import React from 'react';
-import { Container, Header } from '../../style';
-import { PersonCard, PersonDescription, PersonName, PersonRole, TeamContainer, WebDescription } from './aboutStyle';
-  
-const About = () => {
+import { Header } from '../../style';
+import { 
+  DivContainer,
+  Gallery,
+  Image,
+  PersonCard, 
+  PersonDescription, 
+  PersonName, 
+  PersonRole, 
+  TeamContainer, 
+  WebDescription 
+} from './aboutStyle';
+
+const About = () => { 
+  function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    return images;
+  }
+ 
+  const images = importAll(require.context("../../../public/images/powellpics", false, /\.(png|jpe?g|svg)$/));
+  console.log(images);
+ 
   return (
-    <div>
-      <br/>
-      <Container> 
+    <DivContainer>
+      <DivContainer> 
         <Header> Our Mission </Header>
         <WebDescription>
         Our mission as the developers behind BruinTunes is to spread the love of music to Bruins far and wide. 
@@ -17,8 +36,8 @@ const About = () => {
         college students and relax with our carefully curated selection of music. Sit back, relax, and scroll these 
         pictures of Powell cat."
         </WebDescription>
-      </Container>
-      <Container>
+      </DivContainer>
+      <DivContainer>
         <Header> The Powell Cat Fan Club Team</Header>
         <TeamContainer>
           <PersonCard>
@@ -61,55 +80,53 @@ const About = () => {
             </PersonDescription>
           </PersonCard>
         </TeamContainer>
-      </Container>
-      <Container>
-        <Header> Pictures of Powell Cat Collected over the Duration of the project</Header>
-        <WebDescription> Does not exist yet because fuck me </WebDescription>
-      </Container>
-    </div>
+      </DivContainer>
+      <DivContainer>
+        <Header> Pictures of Powell Cat Collected over the Duration of the project </Header>
+        <Gallery>
+          <Image src={images["20220429_074829.jpg"]} alt="20220429_074829.jpg" />
+          <Image src={images["20220429_074948.jpg"]} alt="20220429_074948.jpg" />
+          <Image src={images["20220504_081040.jpg"]} alt="20220504_081040.jpg" />
+          <Image src={images["20220504_081046.jpg"]} alt="20220504_081046.jpg" />
+          <Image src={images["20220506_083015.jpg"]} alt="20220506_083015.jpg" />
+          <Image src={images["20220506_083019.jpg"]} alt="20220506_083019.jpg" />
+          <Image src={images["20220506_083038.jpg"]} alt="20220506_083038.jpg" />
+          <Image src={images["20220506_083239.jpg"]} alt="20220506_083239.jpg" />
+          <Image src={images["20220506_083304.jpg"]} alt="20220506_083304.jpg" />
+          <Image src={images["20220513_075229.jpg"]} alt="20220513_075229.jpg" />
+          <Image src={images["20220513_075240.jpg"]} alt="20220513_075240.jpg" />
+          <Image src={images["20220513_075247.jpg"]} alt="20220513_075247.jpg" />
+          <Image src={images["20220513_075257.jpg"]} alt="20220513_075257.jpg" />
+          <Image src={images["20220523_080858.jpg"]} alt="20220523_080858.jpg" />
+          <Image src={images["20220523_080906.jpg"]} alt="20220523_080906.jpg" />
+          <Image src={images["20220523_080914.jpg"]} alt="20220523_080914.jpg" />
+          <Image src={images["20220523_080937.jpg"]} alt="20220523_080937.jpg" />
+          <Image src={images["20220523_080948.jpg"]} alt="20220523_080948.jpg" />
+          <Image src={images["20220523_081001.jpg"]} alt="20220523_081001.jpg" />
+          <Image src={images["20220524_081502.jpg"]} alt="20220524_081502.jpg" />
+          <Image src={images["20220524_081521.jpg"]} alt="20220524_081521.jpg" />
+        </Gallery>
+      </DivContainer>
+    </DivContainer>
   );
 };
   
 export default About;
 
-/* TEAM: If you have anything better, you can change it
+
+/*
+        {Object.keys(images).forEach(key => <Image src={images[key]} alt={key}/>)}
+
+<Image src={process.env.PUBLIC_URL + "/images/homeBack.jpg"}/>
+          {(images).keys().map((images[i]) => (
+              <Image src={images[i]} alt={i}/>
+            ))}
+Object.keys(images).forEach(key => return <Image src={images[key]} alt={key}/>)
+map((item) => { 
+  <Image src={images[item] alt={item});
 
 
-<p class = "site-description"> Spotify is good, but it could be better. Imagine a platform where you could discuss your 
-      favorite artists and music with other people in addition to listening to your favorite songs. Introducing…BruinTunes™!!! 
-      BruinTunes is like Spotify, but better. You can share your unique perspectives on diverse genres of music and discuss your 
-      favorite artists and albums with like-minded people.
-      <br/>
-      <br/>
-      BruinTunes will be a web-based application that hosts the links to your favorite music on its platform, along with a few other 
-      features. You can find some of the most popular artists through tags like genres, decade, and more. Additionally, you can comment 
-      on and like certain artists and their songs, as well as like other people's comments. Finally, you can make lists and rankings of 
-      your favorite music, although this won't be tied to an account.
-      <br/>
-      <br/>
-      Our motivation for this project is to create a platform for UCLA students to share their music with each other. As music lovers 
-      ourselves, we want a platform where anyone can find information about new artists and discover new songs. Spotify is great for 
-      listening to music and making playlists. However, there's no good way to comment on and make lists of your favorite music. 
-      Additionally, with YouTube's choice to remove comments on “Artist - Topic” channels, it's a lot harder to be social with your music. 
-      Music is one way of communicating with other people, and that's a void BruinTunes will fill.
-      </p>
-      
-      <div class = "team-description">
-        <div class = "general-desc">
-          <img src={Image} alt="ghost cat" />
-          <h1> About Us!</h1>
-          <p>Hi! We are a team of 4 undergraduate students at UCLA. We love music and Powell Cat!</p>
-          <p>Mail us feedback at bruintunesucla@gmail.com</p>
-        </div>
 
-        <div class="person-desc">
-          <h2>Our Team</h2>
-          <p>Laura Ness</p>
-          <p>Rachel Truong</p>
-          <p>Tiffany Hwang</p>
-          <p>Brandon Tran</p>
-          <p>Daniel Zhu</p>
-        </div>
-      </div>
+ 
 
 */

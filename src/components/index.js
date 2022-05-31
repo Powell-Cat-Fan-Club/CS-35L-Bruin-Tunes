@@ -14,8 +14,6 @@ import {
   OpenLinksButton,
   NavbarLinkExtended,
 } from "./NavbarElements.js";
-import LogoImg from "../images/cat.svg";
-import { render } from "@testing-library/react";
 
 function Navbar() {
   const [extendNavbar, setExtendNavbar] = useState(false);
@@ -66,32 +64,31 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLogo to="/"> 
-            <Logo src={LogoImg} alt="Powell Cat's Music" />
-            &nbsp;BruinTunes
+            <Logo src={process.env.PUBLIC_URL + "/images/cat.svg"} alt="Powell Cat's Music" />
+            &#160;BruinTunes
           </NavbarLogo>
         </LeftContainer>
         
         <RightContainer>
-          <NavbarLinkContainer>
-            <NavbarLink to="/artists"> Artists Pages </NavbarLink>
-            <NavbarLink to="/comments"> Comments </NavbarLink>
-            <NavbarLink to="/charts"> Charts </NavbarLink>
-            <NavbarLink to="/userlist"> Lists </NavbarLink>
-            <NavbarLink to="/about"> About us! </NavbarLink>
-            <NavbarLink to="/login" onClick={logOutOnClick}> {text} </NavbarLink>
-            <OpenLinksButton
-              onClick={() => {
-                setExtendNavbar((curr) => !curr);
-              }}
-            >
-              {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
-            </OpenLinksButton>
-          </NavbarLinkContainer>
+          <NavbarLink to="/artists"> Artists Pages </NavbarLink>
+          <NavbarLink to="/comments"> Comments </NavbarLink>
+          <NavbarLink to="/charts"> Charts </NavbarLink>
+          <NavbarLink to="/userlist"> Lists </NavbarLink>
+          <NavbarLink to="/about"> About us! </NavbarLink>
+          <NavbarLink to="/login" onClick={logOutOnClick}> {text} </NavbarLink>
+          <OpenLinksButton
+            onClick={() => {
+              setExtendNavbar((curr) => !curr);
+            }}
+          >
+            {extendNavbar ? <>&#10005;</> : <> &#8801;</>}
+          </OpenLinksButton>
         </RightContainer>
       </NavbarInnerContainer>
 
       {extendNavbar && (
         <NavbarExtendedContainer>
+          <NavbarLinkExtended to="/"> Home </NavbarLinkExtended>
           <NavbarLinkExtended to="/artists"> Artists Pages </NavbarLinkExtended>
           <NavbarLinkExtended to="/comments"> Comments </NavbarLinkExtended>
           <NavbarLinkExtended to="/charts"> Charts </NavbarLinkExtended>

@@ -5,6 +5,7 @@ shows name of artist, number of albums, genres, and links to albums
 import React, {useState, useEffect} from "react";
 import { useParams, Outlet } from "react-router-dom";
 import { LeftContainer, RightContainer } from "../../components/NavbarElements";
+import { DivContainer } from "../../style";
 import { 
   Banner,
   ContentContainer,
@@ -60,13 +61,15 @@ export default function ArtistTemplate(){
               <Title> Artist: {artist.name} </Title>
               <Description> {artist.info} </Description>
             </LeftContent>
-            <RightContent>
-              <Description align="left">
-                Genres: 
-                <GenreList>
-                  {artist.genres.map((genre) => <GenreItem key={genre}>{genre}</GenreItem>)}
-                </GenreList>
-              </Description>
+            <RightContent align="left">
+              <div style={{marginLeft: "1rem"}}>
+                <Description align="left">
+                  Genres: 
+                  <GenreList>
+                    {artist.genres.map((genre) => <GenreItem key={genre}>{genre}</GenreItem>)}
+                  </GenreList>
+                </Description>
+              </div>
             </RightContent>
           </MiniBox>
           <LikeButton onClick={likeArtist}>❤️ {artist.likes} likes!</LikeButton> 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink as Link} from "react-router-dom";
 
 export const HomeBackground = styled.div`
-    background-image: url("${process.env.PUBLIC_URL}/homeBack.jpg");
+    background-image: url("${process.env.PUBLIC_URL}/images/homeBack.jpg");
     background-repeat: no-repeat;
     background-size: 100vw auto;
 `

@@ -63,7 +63,7 @@ export const NavLink = styled(Link)`
     text-align: center;
 
     width: 100%;
-    padding: .2rem 0px;
+    padding: .2rem;
     align-items: center;
     margin: .5rem 0px; 
 
@@ -94,10 +94,11 @@ export const RightContent = styled.nav`
     width: 18%;
     border-left: solid 1px;
     padding: 0px .9rem;
+    margin: 1rem 0px;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: ${props => props.align || "center" };
     justify-content: flex-start;
 `
 

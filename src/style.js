@@ -7,10 +7,12 @@ export const Header = styled.h1`
     text-decoration: none;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white,-2px -2px white, 2px 2px white, 2px -2px white, -2px 2px white;
     text-align: center;
-    margin: 0;    
+    margin: 0px;    
 `
-
-export const Container = styled.div`
-    justify-content: center;
-    margin: 1rem 0px 5rem;
+export const DivContainer = styled.div`
+    display: flex;
+`
+export const NavContainer = styled.nav`
+    display: flex;
+    flex-direction: column;
 `
