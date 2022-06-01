@@ -44,7 +44,7 @@ const About = () => {
             <PersonName> Rachel Truong </PersonName>
             <PersonRole> Frontend Developer </PersonRole>
             <PersonDescription>
-              Designed the look  and the login page
+              Designed the look of the website and the home, about, and login page
             </PersonDescription>
           </PersonCard>
 

@@ -9,7 +9,7 @@ import About from './pages/pagesABOUT/about';
 
 import CommentBox from './pages/CommentBox';
 
-import Charts from './pages/charts';
+import Charts from './pages/pagesCHARTS/charts';
 
 import Artists from './pages/pagesARTISTS/artists';
 import ArtistTemplate from './pages/pagesARTISTS/artists-template';
