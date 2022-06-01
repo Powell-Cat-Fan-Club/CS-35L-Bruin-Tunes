@@ -19,7 +19,7 @@ import Songs from './pages/pagesARTISTS/songs';
 import Login from './pages/pagesLOGIN/login'
 import SignUp from './pages/pagesLOGIN/signup';
 
-import UserList from './pages/user-lists';
+import UserList from './pages/pagesLIST/user-lists';
 import { ContentContainer, MiddleText } from './pages/pagesARTISTS/artistsStyle';
   
 function App() {
