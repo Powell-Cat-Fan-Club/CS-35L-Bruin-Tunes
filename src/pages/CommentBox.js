@@ -22,20 +22,46 @@ export default function CommentBox() {
       setComments(comments);
     }
     GetComments();
-  }
-  )
+  }, [comments])
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    async function GetUser() {
+      const response = await fetch(`http://localhost:5000/loggedinuser/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      let users = await response.json();
+      setUser(users);
+    }
+    GetUser();
+  }, [user])
+
     //console.log(comments);  
 
-    return(   
+    return(   user != undefined ?
       <div className="container">
         <div className="comments">
-          <h2>Comments:</h2>
+          <h2>{"Comments:"}</h2>
           <CommentList data={comments} />
         </div>
         <div className="form">
           <CommentForm />
         </div>
+      </div> : 
+      <div className="container">
+      <div className="comments">
+        <h2>{"Log in to comment!"}</h2>
+        <CommentList data={comments} />
       </div>
+      <div className="form">
+        <CommentForm />
+      </div>
+    </div>
     )
   }
 

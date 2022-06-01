@@ -2,14 +2,14 @@
 // CommentForm.js
 import React, {useState} from 'react';
 
-import { useNavigate } from "react-router";
+//import { useNavigate } from "react-router";
 
 export default function NewComment() {
   const [comment, setComment] = useState({
-    username: "",
+    // username: "",
     comment: "",
   });
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   function updateComment(value) {
     return setComment((prev) => {
@@ -21,13 +21,24 @@ export default function NewComment() {
 async function submitComment(e) {
   e.preventDefault();
   const newComment = {...comment};
-  if(newComment.username != "" && newComment.comment != ""){
+
+  
+  const response = await fetch(`http://localhost:5000/loggedinuser/`);
+
+  if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
+    }
+  let user = await response.json();
+
+  if(user != undefined && user.username != "" && newComment.comment != ""){
     await fetch("http://localhost:5000/comments/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       }, 
-      body: JSON.stringify(newComment),
+      body: JSON.stringify({username: user.username, comment: newComment.comment}),
     })
     .catch (error => {
       window.alert(error);
@@ -36,14 +47,15 @@ async function submitComment(e) {
   }
 }
 
+
 return (
   <form onSubmit={submitComment}>
-    <input
+    {/* <input
       type="text"
       name="author"
       placeholder="Your name…"
       onChange={(e) => updateComment({ username: e.target.value})}
-    />
+    /> */}
     <input
       type="text"
       name="text"
