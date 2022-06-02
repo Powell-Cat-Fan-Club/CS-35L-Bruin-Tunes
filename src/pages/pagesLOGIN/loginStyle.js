@@ -16,6 +16,7 @@ export const MainContainer = styled(DivContainer)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
 `
 export const SideContainer = styled(MainContainer)`
     background: rgb(60,125,173);

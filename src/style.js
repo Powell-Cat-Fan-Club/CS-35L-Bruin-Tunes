@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const Header = styled.h1`
     color: #000;
-    font-size: 60px;
+    font-size: 4rem;
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white,-2px -2px white, 2px 2px white, 2px -2px white, -2px 2px white;
     text-align: center;
-    line-height: 63px;
+    line-height: 4.2rem;
     margin: 0px 3.5rem;    
 `
 export const DivContainer = styled.div`

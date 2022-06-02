@@ -16,60 +16,65 @@ export const SideContainer = styled(Container)`
     border: solid 2px;
     border-left: ${props => props.isRight? "none":"solid 2px" };
 
-
     @media (max-width: 1000px) {
-        width: 100%;
-        border: "solid 2px";
+        width: 99%;
+        border: solid 2px;
+        border-top: ${props => props.isRight? "none":"solid 2px" }
     }
 `
 export const SideContent = styled(Container)`
     padding: 1rem;
-    width: 97%;
+    width: 96.5%;
     flex-direction: inherit;
     overflow-x: hidden; 
     overflow-y: auto;
 `
 export const SideTitle = styled.h2`
-    color: Black;
-    font-size: xx-large; 
+    color: #000;
+    font-size: 2.3rem; 
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
     
     padding: 1rem;
     margin: 0px;
-
     border-bottom: solid 2px;
-
     background-color: ${props => props.color};
 ` 
 
-
 export const Username = styled.input `
-    color: Black;
-    font-size: x-large; 
+    color: #000;
+    font-size: 1.5rem; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
 
     margin: 1rem 0px;
+    display: flex;
+    width: 98.5%;
+    max-width: 18rem;
 `
+export const ChoiceBox = styled.fieldset`
+    border-color: gold;
+    margin: .5rem 0px;
+`
+
 export const OptionTitle = styled.legend `
-    color: Black;
-    font-size: x-large; 
+    color: #000;
+    font-size: 2rem; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
 `
+
 export const OptionChoice = styled.label `
-    color: Black;
-    font-size: x-large; 
+    color: #000;
+    font-size: 1.2rem; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
 
-    flex-direction: column;
-
+    display: block;
 `
 export const SubmitButton = styled.button`
-    color: Black;
+    color: #000;
     font-size: x-large; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
@@ -84,6 +89,7 @@ export const SubmitButton = styled.button`
     border: 1px solid #16425b;
     cursor: pointer;
 `
+
 
 export const ListCard = styled(DivContainer)`
     display: block;
@@ -103,14 +109,14 @@ export const ListCard = styled(DivContainer)`
 `
 export const ListCreator = styled.h3`
     margin: 0px;
-    color: Black;
+    color: #000;
     font-size: x-large; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
 `
 export const ListContent = styled.p`
     margin: 0px;
-    color: Black;
+    color: #000;
     font-size: x-large; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;

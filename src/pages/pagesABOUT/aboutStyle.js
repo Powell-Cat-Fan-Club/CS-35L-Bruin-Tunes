@@ -30,7 +30,7 @@ export const PersonCard = styled.div`
     align-items: center;
     margin: .5rem; 
 
-    background-color: #55c1ff;
+    background-color: #6FB2D2;
     border-radius: 5px;
     border: 1px solid #16425b;
     box-shadow: 0px 0px 10px 1px #cccccc;

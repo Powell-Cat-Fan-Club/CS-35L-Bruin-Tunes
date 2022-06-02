@@ -169,12 +169,12 @@ const UserList = () => {
       <Header> List your top artists! </Header>
       <DivContainer direction="row">
         <SideContainer>
-          <SideTitle color="#0AA1DD"> Create Your Own </SideTitle>
+          <SideTitle color="#3C8DAD"> Create Your Own </SideTitle>
           {displaySelector()}
         </SideContainer>
 
         <SideContainer isRight={true} >
-          <SideTitle isRight={true} color="#3C8DAD" > Other People's Lists </SideTitle>
+          <SideTitle isRight={true} color="#0AA1DD" > Other People's Lists </SideTitle>
           {displayLists()}
         </SideContainer> 
       </DivContainer>

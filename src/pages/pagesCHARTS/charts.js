@@ -1,17 +1,23 @@
 //credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link} from "react-router-dom";
-import { Header, NavContainer } from '../../style';
 import { MiddleText } from '../pagesARTISTS/artistsStyle';
 import { 
-  ArtistDescription,
+  ArtistLikes,
+  ArtistName,
+  ContentContainer,
   DivContainer,
+  GenreDiv,
   GenreItem,
   GenreList,
+  GenreTag,
+  Header,
+  NameDiv,
   NavLink, 
   RankItem, 
-  RankList
+  RankList,
+  RankNumber,
+  SearchBar
 } from './chartsStyle';
 
 const Charts = () => {
@@ -34,12 +40,16 @@ const Charts = () => {
     //Sort artists by ranking
     let sortedArtists = [].concat(artists);
     sortedArtists.sort((a,b) => b.likes - a.likes);
+    
+    
+    
+    
     return (
-      <DivContainer>
+      <ContentContainer>
         {/* Filtering block */}
-        <input placeholder='Search by genre' onChange={(e) => setUserSearch(e.target.value)} />
+        <SearchBar placeholder='Search by genre' onChange={(e) => setUserSearch(e.target.value)} />
         <RankList>
-          <NavContainer>
+          <nav>
             {sortedArtists
               .filter((val) => {
                 let genres = [];
@@ -59,26 +69,29 @@ const Charts = () => {
                 }
               })
               .map((artist) => 
-                <RankItem>
-                  <NavLink to={'/artists/' + artist.name}>
-                    {artist.name}
-                  </NavLink>
-
-                  <ArtistDescription> {'Likes: ' + artist.likes} </ArtistDescription>
-                  <ArtistDescription> {'Genres: ' } </ArtistDescription>
-                  <GenreList> 
-                    {artist.genres.map((genre) => 
-                      <GenreItem key={genre}>
-                        {genre}
-                      </GenreItem>
-                    )}
-                  </GenreList>
+                <RankItem to={'/artists/' + artist.name}>
+                  <RankNumber/>
+                  <NameDiv>
+                    <ArtistName> {artist.name} </ArtistName>
+                    <ArtistLikes> {'Likes: ' + artist.likes} </ArtistLikes>
+                  </NameDiv>
+                  <GenreDiv>
+                    <GenreTag> {'Genres: ' } </GenreTag>
+                    <GenreList> 
+                      {artist.genres.map((genre) => 
+                        <GenreItem key={genre}>
+                          {genre}
+                        </GenreItem>
+                      )}
+                    </GenreList>
+                  </GenreDiv>
+                  
                 </RankItem>
               )
             }
-          </NavContainer> 
+          </nav> 
         </RankList>
-      </DivContainer>
+      </ContentContainer>
     )
   }
   return ( artists ?
