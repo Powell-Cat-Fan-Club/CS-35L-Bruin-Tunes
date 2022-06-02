@@ -1,4 +1,11 @@
-//credit to: https://www.mongodb.com/languages/mern-stack-tutorial
+/***************************************************************************
+*    Citation
+*    Title: MERN Stack Tutorial
+*    Author: MongoDB
+*    Date: 2022
+*    Availability: https://www.mongodb.com/languages/mern-stack-tutorial
+*    Usage: Framework for server.js
+****************************************************************************/
 const express = require("express");
 const app = express();
 const cors = require("cors");

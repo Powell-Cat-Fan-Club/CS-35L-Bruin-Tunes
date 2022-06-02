@@ -1,5 +1,11 @@
-// Source: https://codesandbox.io/s/f6l29?file=/src/App.js
-
+/***************************************************************************
+*    Citation
+*    Title: react-youtube demo
+*    Author: Kevin Cunningham
+*    Date: 2021
+*    Availability: https://codesandbox.io/s/f6l29?file=/src/App.js
+*    Usage: YouTube player
+****************************************************************************/
 /* songs: individual song pages (under specific album)
 shows name and youtube video of song
 */ 

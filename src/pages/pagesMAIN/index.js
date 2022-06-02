@@ -1,4 +1,11 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+/***************************************************************************
+*    Citation
+*    Title: How to create a multi-page website using React.js ?
+*    Author: namanjaingeeksforgeeks
+*    Date: 2022
+*    Availability: https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+*    Usage: Structure of this file
+****************************************************************************/
 import React from 'react';
 import { Header } from '../../style';
 import { Description, HomeBackground, LinksContainer , NavLink, TitleContainer} from './indexElements';

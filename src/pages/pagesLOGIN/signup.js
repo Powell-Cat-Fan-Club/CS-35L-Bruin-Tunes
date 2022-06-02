@@ -1,4 +1,3 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React, {useEffect, useState} from 'react';
 import { DivContainer } from '../../style.js';
 import {findUsername} from './finduser.js';

@@ -1,4 +1,3 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { MiddleText } from '../pagesARTISTS/artistsStyle';

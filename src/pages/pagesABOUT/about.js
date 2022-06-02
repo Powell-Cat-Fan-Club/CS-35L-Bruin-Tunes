@@ -1,5 +1,12 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/ 
-//credit for gallery https://www.codegrepper.com/code-examples/javascript/How+to+load+all+images+in+a+folder+react
+/***************************************************************************
+*    Citation
+*    Title: Dynamically import images from a directory using webpack
+*    Author: klinore
+*    Date: 2017
+*    Availability: https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
+*    Usage: Import images from folder
+***************************************************************************/
+
 import React from 'react';
 import { Header } from '../../style';
 import { 
@@ -22,7 +29,7 @@ const About = () => {
   }
   const images = importAll(require.context("./powellpics", false, /\.(png|jpe?g|svg)$/));
   /* would be in the public domain, but would not work */
- 
+
   return (
     <DivContainer>
       <DivContainer> 
@@ -109,6 +116,5 @@ const About = () => {
     </DivContainer>
   );
 };
-  
-export default About;
 
+export default About;

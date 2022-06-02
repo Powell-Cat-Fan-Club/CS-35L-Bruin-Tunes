@@ -1,6 +1,25 @@
-//credit to https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
-//credit to https://reactrouter.com/docs/en/v6/getting-started/tutorial
-// credit to https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
+/***************************************************************************
+*    Citation 1
+*    Title: How to create a multi-page website using React.js ?
+*    Author: namanjaingeeksforgeeks
+*    Date: 2022
+*    Availability: https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+*    Usage: Portions of this file (linking related items)
+***************************************************************************
+*    Citation 2
+*    Title: Tutorial [For React Router]
+*    Author: React Router
+*    Date: 2022
+*    Availability: https://reactrouter.com/docs/en/v6/getting-started/tutorial
+*    Usage: Portions of this file (router-related)
+****************************************************************************
+*    Citation 3
+*    Title: How to prevent useEffect from running on mount in React
+*    Author: Nick Scialli 
+*    Date: 2022
+*    Availability: https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
+*    Usage: Portions of this file (useeffect)
+****************************************************************************/
 import React, {useState, useEffect} from 'react';
 import { useLocation, Outlet, useSearchParams } from "react-router-dom";
 
