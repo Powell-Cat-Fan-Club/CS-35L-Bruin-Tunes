@@ -1,5 +1,5 @@
 export function findUser(userID, passID, users) {
-  if (users == undefined) {
+  if (users === undefined) {
     return undefined; 
   }
     for (var i = 0; i < users.length; i++)
@@ -13,7 +13,7 @@ export function findUser(userID, passID, users) {
 };
 
 export function findUsername(userID, users) {
-  if (users == undefined) {
+  if (users === undefined) {
     return undefined; 
   }
   for (var i = 0; i < users.length; i++)

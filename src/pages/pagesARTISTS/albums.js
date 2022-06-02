@@ -3,12 +3,12 @@ shows name of album, release date, extra info, and links to songs
 */ 
 
 import React, {useState, useEffect} from 'react';
-import { useParams, Outlet } from "react-router-dom";
-import { RightContainer } from '../../components/NavbarElements';
+import { useParams } from "react-router-dom";
 import { 
   ContentContainer, 
   Description, 
   LeftContent, 
+  MiddleText,
   NavLink,
   RightContent,
   Title 
@@ -48,8 +48,8 @@ const Albums = () => {
         </RightContent>
       </ContentContainer>
       : 
-      <ContentContainer>
-      Loading ...
+      <ContentContainer location="center">
+        <MiddleText> Loading... </MiddleText> 
       </ContentContainer>
     )
 

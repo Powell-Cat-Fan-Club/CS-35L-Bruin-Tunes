@@ -1,5 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import { DivContainer } from '../../style.js';
 import {findUsername} from './finduser.js';
+import { 
+  AccountForm,
+  ErrorBox,
+  Header,
+  InputBox,
+  MainContainer,
+  NavLink,
+  SideContainer,
+  SubmitButton
+} from './loginStyle.js';
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -15,150 +26,119 @@ export default function SignUp() {
       return {...prev, ...value};
     });
   }
+
+  const [showError, setshowError] = useState(false);
   const [users, setUsers] = useState();
   
-    useEffect(() => {
-      async function getUsers() {
-        const response = await fetch(`http://localhost:5000/login/`);
-  
-        if (!response.ok) {
-          const message = `An error occurred: ${response.statusText}`;
-          window.alert(message);
-          return;
-        }
-        const users = await response.json();
-        setUsers(users);
+  useEffect(() => {
+    async function getUsers() {
+      const response = await fetch(`http://localhost:5000/login/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const users = await response.json();
+      setUsers(users);
     }
+
     getUsers();
   });
 
-async function onSubmit(e) {
-  e.preventDefault();
-  const newUser = {...form};
+  async function onSubmit(e) {
+    e.preventDefault();
+    const newUser = {...form};
+    const errorHTML = document.getElementById("signError");
+    setshowError(true);
 
-  //check for duplicates
-  var usernameUsed = findUsername(newUser.username, users);
-  if(usernameUsed != undefined) {
-    document.getElementById("signup").innerHTML="Sorry, that username has been taken.";
-  }
-  else if (newUser.username.length == 0) {
-    document.getElementById("signup").innerHTML="Please enter in a valid username.";
-  }
-  else if (newUser.password.length == 0) {
-    document.getElementById("signup").innerHTML="Please enter in a valid password.";
-  }
-  else{
-    document.getElementById("signup").innerHTML="Account created.";
-
-    //add user
-    await fetch("http://localhost:5000/login/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      }, 
-      body: JSON.stringify(newUser),
-    })
-    .catch (error => {
-      window.alert(error);
+    //check for missing info 
+    if (newUser.username.length === 0) {
+      errorHTML.innerHTML="Please enter in a valid username.";
       return;
-    });
+    }
+    else if (newUser.password.length === 0) {
+      errorHTML.innerHTML="Please enter in a valid password.";
+      return;
+    }
 
-    setForm({username:"", password:"", isloggedin: false, likes: [], comments: []});
+    //check the verify
+    const verify = document.getElementById('signVerify').value;
+    if (verify.length === 0) {
+      errorHTML.innerHTML="Please confirm your password.";
+      return;
+    }
+    else if (newUser.password !== verify) {
+      errorHTML.innerHTML="Passwords entered do not match.";
+      return;
+    }
 
+    //check for duplicates
+    var usernameUsed = findUsername(newUser.username, users);
+    if(usernameUsed !== undefined) {
+      errorHTML.innerHTML="Sorry, that username has been taken.";
+      return;
+    }
+     
+    else{
+      //add user
+      await fetch("http://localhost:5000/login/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        }, 
+        body: JSON.stringify(newUser),
+      })
+      .catch (error => {
+        window.alert(error);
+        return;
+      });
+
+      //reset page
+      setshowError(false);
+      document.getElementById('signVerify').value="";
+      setForm({username:"", password:"", isloggedin: false, likes: [], comments: []});
+      
+      //redirect to login page
+      window.location.href = "/login";
+      window.alert("Account created.");
+    }
   }
-}
+
   return(
-  <div>
-     <h3>Sign up!</h3>
-     <h4 id="signup"></h4>
-     <form onSubmit={onSubmit}>
-       <div className="form-group">
-         <label htmlFor="username">Username</label>
-         <input
-           type="text"
-           className="form-control"
-           id="username"
-           value={form.username}
-           onChange={(e) => updateForm({ username: e.target.value, isloggedin: false, comments:[], likes:[] })}
-         />
-       </div>
-       <div className="form-group">
-         <label htmlFor="password">Password</label>
-         <input
-           type="text"
-           className="form-control"
-           id="password"
-           value={form.password}
-           onChange={(e) => updateForm({ password: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <input
-           type="submit"
-           value="Create account"
-           className="btn btn-primary"
-         />
-       </div>
-     </form>
-   </div>
+    <DivContainer>
+      <SideContainer width="30%">
+        <Header> Have an Account? </Header>
+        <NavLink to="/login"> Log in </NavLink>
+      </SideContainer>
+
+      <MainContainer width="70%">
+        <Header> Sign Up </Header>
+        <ErrorBox id="signError" show={showError}></ErrorBox>
+        <AccountForm onSubmit={onSubmit}>
+          <InputBox 
+            id="signName"
+            type="text" 
+            placeholder="Username" 
+            value={form.username}
+            onChange={(e) => updateForm({ username: e.target.value, isloggedin: false, comments:[], likes:[] })}
+          />
+          <InputBox 
+            id="signPassword"
+            type='password'  
+            placeholder="Password"
+            value={form.password}
+            onChange={(e) => updateForm({ password: e.target.value })}
+          />
+          <InputBox 
+            id="signVerify"
+            type='password'  
+            placeholder="Confirm Password"
+          />
+
+          <SubmitButton type="submit"> Create account </SubmitButton>
+        </AccountForm>
+      </MainContainer>
+    </DivContainer>
  );
 }
-
-// export default function SignUp() {
-//   function btnOnClick() {  
-//     var eleERROR = document.getElementById('errorTXT'); 
-    
-//     var newUser = document.getElementById('nameR').value;
-//     if (!newUser) {
-//       eleERROR.innerHTML = 'Username required';
-//       return;
-//     }
-    
-//     var newPass = document.getElementById('passwordR').value;
-//     if (!newPass) {
-//       eleERROR.innerHTML = 'Password required';
-//       return;
-//     }
-
-//     //here is the problem
-//     var oldUser = findUser(newUser);
-//     if (oldUser) {
-//       eleERROR.innerHTML = 'Invalid Username';
-//       return;
-//     }
-
-//     addUser(newUser,newPass);
-//     console.log("has gone here");
-//     window.location.href = "/login";
-//   }
-  
-//   return (  
-//     <div>
-//       <h1>Register</h1>
-//       <h3 id="errorTXT"></h3>
-//       <input type='text' id="nameR" placeholder="Username"/>
-//       <br/>
-//       <br/>
-//       <input type='password' id="passwordR" placeholder="Password"/>
-//       <br/>
-//       <br/>
-//       <button onClick={btnOnClick}>Register</button>
-      
-//     </div>
-//   );
-// };
-
-
-
-
-
-/*
-      <script type="text/JavaScript">
-               
-      </script>
-*/
-
-
-
-
-
