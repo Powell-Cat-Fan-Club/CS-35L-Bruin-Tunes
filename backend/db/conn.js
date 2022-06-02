@@ -1,4 +1,12 @@
-//credit to: https://www.mongodb.com/languages/mern-stack-tutorial
+/***************************************************************************
+*    Citation
+*    Title: MERN Stack Tutorial
+*    Author: MongoDB
+*    Date: 2022
+*    Availability: https://www.mongodb.com/languages/mern-stack-tutorial
+*    Usage: Framework for conn.js
+****************************************************************************/
+
 const { MongoClient } = require("mongodb");
 const Db = process.env.ATLAS_URI;
 const client = new MongoClient(Db, {

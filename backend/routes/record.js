@@ -1,4 +1,11 @@
-//credit to: https://www.mongodb.com/languages/mern-stack-tutorial
+/***************************************************************************
+*    Citation
+*    Title: MERN Stack Tutorial
+*    Author: MongoDB
+*    Date: 2022
+*    Availability: https://www.mongodb.com/languages/mern-stack-tutorial
+*    Usage: Overall framework for record.js, but not all routes
+****************************************************************************/
 const express = require("express");
 
 // recordRoutes is an instance of the express router.
@@ -62,35 +69,6 @@ recordRoutes.route("/artists/artist/:artist/album/:album/song/:song").get(functi
       });
 });
 
-// attempt at routing
-// recordRoutes.route("/artists/artist/:name/album/:album").get(function (req, res) {
-//   let db_connect = dbo.getDb("BruinTunes");
-//   let myquery = { name:  req.params.name };
-//   let myalbum = { name: req.params.album };
-//   db_connect
-//       .collection("Artists")
-//       .aggregate([
-//         { $match: {myquery}},
-//         { $unwind: {array: 1}},
-//         { $match: {myalbum}}
-//       ]);
-//       //.findOne({}, myquery)
-//       // .findOne(myalbum, function (err, result) {
-//       //   if (err) throw err;
-//       //   res.json(result);
-//       // });
-// });
-
-//Get artist by name
-//case sensitive
-// recordRoutes.route("/artists/artist/:name").get(function (req, res) {
-//   let db_connect = dbo.getDb("BruinTunes");
-//   db_connect.collection("Artists").find({"name": req.params.name}).toArray(function(err, result) {
-//     if (err) throw err;
-//     res.json(result);
-//   });
-// });
-
 //Get artist by album (case sensitive)
 recordRoutes.route("/artists/album/:album").get(function (req, res) {
   let db_connect = dbo.getDb("BruinTunes");
@@ -113,19 +91,6 @@ recordRoutes.route("/artists/song/:song").get(function (req, res) {
   });
 });
 
-
-
-// //gets given album info given the artist and the album name (case sensitive)
-// recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, res) {
-//   let db_connect = dbo.getDb("BruinTunes");
-//   db_connect.collection("Artists")
-//   .find({name: req.params.name, albums:{$elemMatch:{name : req.params.album}}}, 
-//     {projection : {"albums.$": 1, _id: 0}})
-//   .toArray(function(err, result) {
-//     if (err) throw err;
-//     res.json(result);
-//   });
-// });
 recordRoutes.route("/artists/artist/:name/getalbum/:album").get(function (req, res) {
   let db_connect = dbo.getDb("BruinTunes");
   db_connect
