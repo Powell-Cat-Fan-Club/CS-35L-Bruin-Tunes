@@ -7,7 +7,6 @@ import {
   RightContainer,
   NavbarExtendedContainer,
   NavbarInnerContainer,
-  NavbarLinkContainer,
   NavbarLogo,
   NavbarLink,
   Logo,
@@ -64,7 +63,7 @@ function Navbar() {
       <NavbarInnerContainer>
         <LeftContainer>
           <NavbarLogo to="/"> 
-            <Logo src={process.env.PUBLIC_URL + "/images/cat.svg"} alt="Powell Cat's Music" />
+            <Logo src={"/images/cat.svg"} alt="Powell Cat's Music" />
             &#160;BruinTunes
           </NavbarLogo>
         </LeftContainer>

@@ -3,15 +3,14 @@ shows name of artist, number of albums, genres, and links to albums
 */ 
 
 import React, {useState, useEffect} from "react";
-import { useParams, Outlet } from "react-router-dom";
-import { LeftContainer, RightContainer } from "../../components/NavbarElements";
-import { DivContainer } from "../../style";
+import { useParams } from "react-router-dom";
 import { 
   Banner,
   ContentContainer,
   Description,
   GenreItem,
   GenreList,
+  Heart,
   LeftContent,
   LikeButton,
   MiddleText,
@@ -61,20 +60,28 @@ export default function ArtistTemplate(){
               <Title> Artist: {artist.name} </Title>
               <Description> {artist.info} </Description>
             </LeftContent>
-            <RightContent align="left">
-              <div style={{marginLeft: "1rem"}}>
+            <RightContent align="flex-start">
                 <Description align="left">
                   Genres: 
                   <GenreList>
                     {artist.genres.map((genre) => <GenreItem key={genre}>{genre}</GenreItem>)}
                   </GenreList>
                 </Description>
-              </div>
             </RightContent>
           </MiniBox>
-          <LikeButton onClick={likeArtist}>❤️ {artist.likes} likes!</LikeButton> 
+          <LikeButton onClick={likeArtist}>
+            <Heart src={"/images/musicLike.png"} alt="❤️"/>&#160;
+            <Heart src={"/images/musicLike.png"} alt="❤️"/>&#160;
+            <Heart src={"/images/musicLike.png"} alt="❤️"/>&#160;
+            <Heart src={"/images/musicLike.png"} alt="❤️"/>&#160;
+            {artist.likes} Likes!
+            &#160;<Heart src={"/images/musicLike.png"} alt="❤️"/>
+            &#160;<Heart src={"/images/musicLike.png"} alt="❤️"/>
+            &#160;<Heart src={"/images/musicLike.png"} alt="❤️"/>
+            &#160;<Heart src={"/images/musicLike.png"} alt="❤️"/>
+          </LikeButton> 
         </LeftContent>
-        <RightContent>
+        <RightContent align="left">
           <Title>
             Albums
           </Title>
@@ -90,7 +97,7 @@ export default function ArtistTemplate(){
         </RightContent>
       </ContentContainer>) 
       : 
-      <ContentContainer>
+      <ContentContainer location="center">
         <MiddleText> Loading... </MiddleText> 
       </ContentContainer>
         

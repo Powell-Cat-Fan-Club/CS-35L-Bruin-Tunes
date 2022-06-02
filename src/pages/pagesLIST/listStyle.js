@@ -12,8 +12,10 @@ export const SideContainer = styled(Container)`
     width: 50%;
     height: 78vh;
     flex-direction: column;
-    padding: 1rem;
-    border-left: ${props => props.isRight? "solid 2px":"none"};
+   
+    border: solid 2px;
+    border-left: ${props => props.isRight? "none":"solid 2px" };
+
 
     @media (max-width: 1000px) {
         width: 100%;
@@ -22,7 +24,8 @@ export const SideContainer = styled(Container)`
     }
 `
 export const SideContent = styled(Container)`
-    width: 100%;
+    padding: 1rem;
+    width: 97%;
     flex-direction: inherit;
     overflow-x: hidden; 
     overflow-y: auto;
@@ -30,12 +33,16 @@ export const SideContent = styled(Container)`
 export const SideTitle = styled.h2`
     color: Black;
     font-size: xx-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
     
-    margin-top: 0px;
-    margin-bottom: 1rem;
+    padding: 1rem;
+    margin: 0px;
+
+    border-bottom: solid 2px;
+
+    background-color: ${props => props.color};
 ` 
 
 
@@ -83,11 +90,14 @@ export const SubmitButton = styled.button`
 
 export const ListCard = styled(DivContainer)`
     display: block;
+    min-heigh: auto;
     padding: .5rem;
     align-items: center;
     margin: .5rem; 
 
-    background-color: #55c1ff;
+    overflow: visible;
+
+    background-color: #ddd;
     border-radius: 5px;
     border: 1px solid #16425b;
     box-shadow: 0px 0px 10px 1px #cccccc;

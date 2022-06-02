@@ -6,38 +6,38 @@ import { DivContainer, NavContainer } from "../style"
 
 export const NavbarContainer = styled(NavContainer)`
   height: ${(props) => (props.extendNavbar ? "auto" : "80px")};
-  background-color: #2774AE;
+  background-color: #0F4C75;
 
-  @media (min-width: 801px) {
+  @media (min-width: 901px) {
     height: 80px;
   }
 `;
 
 export const LeftContainer = styled(DivContainer)`
-  flex: 30%;
   align-items: stretch;
 `;
 
 export const RightContainer = styled(LeftContainer)`
-  flex: 70%;
   justify-content: flex-end;
 `;
 
 export const NavbarInnerContainer = styled(DivContainer)`
   width: 100%;
   height: 80px;
+  justify-content: space-between;
 `;
 
 export const NavbarLogo = styled(Link)`
   color: white;
-  font-size: xx-large;
-  font-family: Arial, Helvetica, sans-serif; /* not set */
+  font-size: 50px;
+  font-family: 'Secular One', Arial, Helvetica, sans-serif;
   text-decoration: none;
   text-align: right;
   
   display: flex;
   align-items: center;
-  padding: 0 .5rem;
+  padding: 0px .5rem;
+  margin: 0px;
   height: 100%;
   cursor: pointer;
 `;
@@ -45,23 +45,15 @@ export const NavbarLogo = styled(Link)`
 export const NavbarLink = styled(NavbarLogo)`
   color: white;
   font-size: medium;
-  font-family: Arial, Helvetica, sans-serif; /* not set */
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif; /* not set */
   text-align: center;
 
   padding: 0 1rem;
 
-  &:hover {
-    background-color: #e6007e;
-  }
-  &:active{
-    background-color: #e6007e;
-  }
-
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     display: none;
   }
 `;
-
 
 export const NavbarLinkExtended = styled(NavbarLink)`
   font-size: x-large;
@@ -80,12 +72,12 @@ export const OpenLinksButton = styled.button`
 
   background: none;
   border: none;
-  margin-right: 1rem;
+  margin: 0px 1rem;
   
   color: white;
   font-size: 3rem;
   cursor: pointer;
-  @media (min-width: 801px) {
+  @media (min-width: 901px) {
     display: none;
   }
 `;
@@ -93,7 +85,7 @@ export const OpenLinksButton = styled.button`
 export const NavbarExtendedContainer = styled(NavContainer)`
   height: auto;
   align-items: center;
-  @media (min-width: 801px) {
+  @media (min-width: 901px) {
     display: none;
   }
 `;

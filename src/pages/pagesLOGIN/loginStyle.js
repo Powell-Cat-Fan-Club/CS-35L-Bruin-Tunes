@@ -21,9 +21,9 @@ export const Header = styled(Title)`
 `
 
 export const ErrorBox = styled.h3`
-    color: Black;
-    font-size: normal; /* not set */
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
+    color: #a00;
+    font-size: 12px; /* not set */
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* not set */ 
     text-decoration: none;
     text-align: center;
 
@@ -32,9 +32,9 @@ export const ErrorBox = styled.h3`
 `
 
 export const InputBox = styled.input`
-    color: Black;
-    font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    color: #00;
+    font-size: 20px; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
 
@@ -46,44 +46,44 @@ export const InputBox = styled.input`
     
 `
 export const SubmitButton = styled.button`
-    color: Black;
-    font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    color: #000;
+    font-size: 25px; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
 
-    padding: .2rem;
+    padding: .2rem 2rem;
     align-items: center;
 
     background-color: #55c1ff;
     border-radius: 10px;
     border: 1px solid #16425b;
     cursor: pointer;
-`
-export const SubText = styled.p`
-    color: Black;
-    font-size: large; /* not set */
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
-    text-decoration: none;
-    text-align: center;
-    margin: 0px 0px 1rem;
+
+    &:hover {
+        background-color: #BBE1FA;
+    }
 `
 
 export const NavLink = styled(Link)`
     color: Black;
     font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
 
-    padding: .2rem;
+    padding: .2rem 2rem;
     align-items: center;
-    margin: .5rem 0px; 
+    margin: 0px; 
 
     background-color: #55c1ff;
     border-radius: 10px;
     border: 1px solid #16425b;
     cursor: pointer;
+
+    &:hover {
+        background-color: #BBE1FA;
+    }
 `
 
 export const AccountForm = styled.form`

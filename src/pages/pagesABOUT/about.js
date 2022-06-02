@@ -20,9 +20,8 @@ const About = () => {
     r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
     return images;
   }
- 
-  const images = importAll(require.context("../../../public/images/powellpics", false, /\.(png|jpe?g|svg)$/));
-  console.log(images);
+  const images = importAll(require.context("./powellpics", false, /\.(png|jpe?g|svg)$/));
+  /* would be in the public domain, but would not work */
  
   return (
     <DivContainer>
@@ -113,20 +112,3 @@ const About = () => {
   
 export default About;
 
-
-/*
-        {Object.keys(images).forEach(key => <Image src={images[key]} alt={key}/>)}
-
-<Image src={process.env.PUBLIC_URL + "/images/homeBack.jpg"}/>
-          {(images).keys().map((images[i]) => (
-              <Image src={images[i]} alt={i}/>
-            ))}
-Object.keys(images).forEach(key => return <Image src={images[key]} alt={key}/>)
-map((item) => { 
-  <Image src={images[item] alt={item});
-
-
-
- 
-
-*/

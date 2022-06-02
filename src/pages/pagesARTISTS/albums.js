@@ -48,7 +48,7 @@ const Albums = () => {
         </RightContent>
       </ContentContainer>
       : 
-      <ContentContainer>
+      <ContentContainer location="center">
         <MiddleText> Loading... </MiddleText> 
       </ContentContainer>
     )

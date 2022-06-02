@@ -150,7 +150,7 @@ const UserList = () => {
               id="name" 
               placeholder="Your name"
               onChange={
-                (e) => e.target.value != "" ? 
+                (e) => e.target.value !== "" ? 
                   updateForm({ username: e.target.value}) 
                 : 
                   updateForm({username: "No username selected"})
@@ -169,12 +169,12 @@ const UserList = () => {
       <Header> List your top artists! </Header>
       <DivContainer direction="row">
         <SideContainer>
-          <SideTitle> Create Your Own </SideTitle>
+          <SideTitle color="#0AA1DD"> Create Your Own </SideTitle>
           {displaySelector()}
         </SideContainer>
 
         <SideContainer isRight={true} >
-          <SideTitle> Other People's Lists </SideTitle>
+          <SideTitle isRight={true} color="#3C8DAD" > Other People's Lists </SideTitle>
           {displayLists()}
         </SideContainer> 
       </DivContainer>

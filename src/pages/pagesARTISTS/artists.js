@@ -18,7 +18,10 @@ import {
 
 function QueryNavLink( {to, ...props}) {
   let location = useLocation();
-  return <NavLink to={to + location.search} {...props}/>;
+  return (
+      <NavLink to={to + location.search} {...props}/>
+    
+  );
 }
   
 const Artists = () => {
@@ -89,9 +92,7 @@ const Artists = () => {
                   if (attr[i].startsWith(filterAttr.toLowerCase())) matches.push(attr[i]);
                 }
               }
-              console.log(matches);
               if (filter & filterAttr) return name.startsWith(filter.toLowerCase()) | matches.length!==0;
-              console.log(matches.length!==0);
               if (!filter) return matches.length!==0;
               if (!filterAttr) return name.startsWith(filter.toLowerCase());
               return false;

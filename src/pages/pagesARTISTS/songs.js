@@ -97,7 +97,7 @@ const Songs = () => {
       </LeftContent>
     </ContentContainer>
     : 
-    <ContentContainer>
+    <ContentContainer location="center">
       <MiddleText> Loading... </MiddleText> 
       {Content()}
     </ContentContainer>

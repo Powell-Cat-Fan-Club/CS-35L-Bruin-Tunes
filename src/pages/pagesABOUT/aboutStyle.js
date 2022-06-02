@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { DivContainer as Container} from "../../style"
+import { DivContainer as Container } from "../../style"
 
 export const DivContainer = styled(Container)`
     width: 100%;
@@ -9,11 +9,11 @@ export const DivContainer = styled(Container)`
 
 export const WebDescription = styled.p`
     color: #000;
-    font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: center;
-    margin: .5rem 5rem 0px;  
+    margin: 0px 5rem;  
 `
 
 export const TeamContainer = styled(DivContainer)`
@@ -46,9 +46,10 @@ export const PersonCard = styled.div`
 `
 
 export const PersonName = styled.h4`
-    color: Black;
-    font-size: large; /* not set */
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
+    color: #000;
+    font-size: 20px;
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
+    font-weight: 1000;
     text-decoration: none;
     text-align: center;
 
@@ -56,9 +57,9 @@ export const PersonName = styled.h4`
 `
 
 export const PersonDescription = styled.p`
-    color: Black;
-    font-size: normal; /* not set */
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
+    color: #000;
+    font-size: 16px; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
 
@@ -66,7 +67,7 @@ export const PersonDescription = styled.p`
 `
 
 export const PersonRole = styled(PersonDescription)`
-    margin: 5px;
+    margin: 0px 5px;
 `
 
 export const Gallery = styled(DivContainer)`
