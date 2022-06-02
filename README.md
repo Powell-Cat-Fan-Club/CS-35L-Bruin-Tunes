@@ -21,22 +21,22 @@ Our motivation for this project is to create a platform for UCLA students to sha
 ## Requirements ##
 
 - A computer connected to eduroam (UCLA wifi).
-- Preferrably, VS Code. 
 
 ## Detailed Steps ##
 
-1. Navigate to the repository page and press the green `Code` button. Copy the HTTP request URL. 
-2. Open up VS Code (or the editor/terminal of your choice). Open a terminal. Type `git clone {url of repository}` to the terminal of your choice (VS Code is what I use, but you can use whatever you want). (ALTERNATIVELY: In VS code, you can also use `ctrl-shift-p` and type in git clone, and an option to do so should come up.) 
-3. Once you have done this, `cd` into the new folder (entitled CS-35L-Bruin-Tunes) and type in `npm install`. This installs the dependencies of the project (outlined in package.json). 
-4. `Cd` to the directory `backend`. Type `npm install` to install the dependencies for the backend. 
-5. Add a file called `config.env` to the `backend` folder. Follow the format of `.env.sample` but replace \<username\> with the username for MongoDB and \<password\> with the password for MongoDB (we will provide the credentials for this/perhaps the file itself). 
-6. Type `npm run server` in `backend` to start running the server and database. If done successfully, you should see the following:
+1. Install `npm` on your machine. 
+2. Install node via `npm`. 
+3. Use `git clone https://github.com/Powell-Cat-Fan-Club/CS-35L-Bruin-Tunes.git` to clone the repository.
+4. Inside the CS-35L-Bruin-Tunes folder created by step 3, type `npm install` to install the dependencies for frontend.
+5. Execute the command `cd backend` to navigate to the backend folder. Inside the backend folder, type `npm install` to install the dependencies for backend.
+6. Type `npm start server` in the backend folder to start running the server and database. If done successfully, you should see the following:
 
       > Server is running on port: 5000
       > 
       > Successfully connected to MongoDB.
       > 
-   The above *does* restart the server every time you make a change to the files in the server (because of `nodemon`). If you don't want this to happen, type `node 
-   server.js` instead.
-7. Execute the following command: `cd ..` to go back to the original directory (aka frontend). Finally, type `npm start` to run the project in your browser. 
+7. In a separate shell, type `npm start` to run the project in your browser (you should be in the CS-35L-Bruin-Tunes folder). This should automatically open the app in your browser, but if it does not, open your browser and go to `http://localhost:3000/`.
 
+## Troubleshooting ##
+
+- If for any reason you cannot connect to the database, it may be that the database does not like your IP address. It should be set up to connect from anywhere, but for some reason MongoDB seems to be finicky about this. Please contact the team of BruinTunes if you run into this issue/move to eduroam wifi. 

@@ -1,5 +1,18 @@
-//credit for the base for responsive navbar: https://github.com/machadop1407/styled-components-responsive-navbar
-
+/***************************************************************************
+*    Citation 1
+*    Title: styled-components-responsive-navbar
+*    Author: machadop1407
+*    Date: 2021
+*    Availability: https://github.com/machadop1407/styled-components-responsive-navbar
+*    Usage: Base for responsive navbar
+***************************************************************************
+*    Citation 2
+*    Title: How to create a multi-page website using React.js ?
+*    Author: namanjaingeeksforgeeks
+*    Date: 2022
+*    Availability: https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/
+*    Usage: Parts of the navbar
+****************************************************************************/
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
