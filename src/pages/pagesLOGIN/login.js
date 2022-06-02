@@ -86,7 +86,7 @@ export default function Login() {
         <SubmitButton onClick={logOnClick}> Login </SubmitButton>
       </MainContainer>
 
-      <SideContainer width="30%">
+      <SideContainer width="30%" isRight={true} >
         <Header> New Here? </Header>
         <NavLink to="/register"> Sign Up for BruinTunes </NavLink>
       </SideContainer>

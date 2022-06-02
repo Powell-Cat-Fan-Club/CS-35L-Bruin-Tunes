@@ -19,8 +19,7 @@ export const SideContainer = styled(Container)`
 
     @media (max-width: 1000px) {
         width: 100%;
-        border-left: none;
-        border-top: ${props => props.isRight? "solid 2px":"none"};
+        border: "solid 2px";
     }
 `
 export const SideContent = styled(Container)`
@@ -44,8 +43,6 @@ export const SideTitle = styled.h2`
 
     background-color: ${props => props.color};
 ` 
-
-
 
 
 export const Username = styled.input `
