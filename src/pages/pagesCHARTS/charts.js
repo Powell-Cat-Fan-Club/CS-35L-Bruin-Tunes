@@ -9,6 +9,7 @@ import {
   GenreDiv,
   GenreItem,
   GenreList,
+  GenreName,
   GenreTag,
   Header,
   NameDiv,
@@ -39,9 +40,6 @@ const Charts = () => {
     //Sort artists by ranking
     let sortedArtists = [].concat(artists);
     sortedArtists.sort((a,b) => b.likes - a.likes);
-    
-    
-    
     
     return (
       <ContentContainer>
@@ -79,7 +77,7 @@ const Charts = () => {
                     <GenreList> 
                       {artist.genres.map((genre) => 
                         <GenreItem key={genre}>
-                          {genre}
+                          <GenreName> {genre} </GenreName>
                         </GenreItem>
                       )}
                     </GenreList>

@@ -31,12 +31,28 @@ export default function SignUp() {
   const [users, setUsers] = useState();
   
   useEffect(() => {
-    async function getUsers() {
-      const response = await fetch(`http://localhost:5000/login/`);
+    async function checkedLog() {
+      const response = await fetch(`http://localhost:5000/loggedinuser`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);
+        return;
+      }
+      const logStatus = await response.json();
+      
+      if (logStatus) {
+        const message2 = `An error occurred: Attempted to access signup page when already logged in. Try again after logining out.`;
+        window.alert(message2);
+        window.location.replace("/");
+      }
+    }
+    checkedLog();
+
+    async function getUsers() {
+      const response = await fetch(`http://localhost:5000/login/`);
+
+      if (!response.ok) {
         return;
       }
       const users = await response.json();

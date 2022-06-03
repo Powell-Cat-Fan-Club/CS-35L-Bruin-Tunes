@@ -14,6 +14,8 @@ import { Description, HomeBackground, LinksContainer , NavLink, TitleContainer} 
 const Home = () => { 
   return (
     <HomeBackground>
+      <div></div>
+
       <TitleContainer>
         <Header>Welcome to BruinTunes</Header>
         <Description> A Streaming Site Made Exclusively For Bruins </Description>

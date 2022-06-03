@@ -44,15 +44,6 @@ export const RankList = styled.ol`
     height: 72vh;
     overflow: auto;
 
-    &   nav RankItem :nth-child(odd)
-    {
-        background-color: green;
-    }
-    nav RankItem:nth-child(even)
-    { 
-        color:Red;
-    }
-
     counter-reset: item;
     list-style-type: none;
 `
@@ -69,9 +60,17 @@ export const RankItem = styled(Link)`
     display: flex;
     flex-direction: row;
 
-    &:hover{
-        background-color: purple;
+    &:nth-of-type(odd) {
+        background-color: #9FC7DF;
     }
+    &:nth-of-type(even) {
+        background-color: #f0f0f0;
+    }
+    &:hover{
+        background-color: #6294B3;
+
+    }
+
 `
 export const RankNumber = styled.li`
     padding: 0px 1rem;
@@ -80,6 +79,7 @@ export const RankNumber = styled.li`
         content: counter(item) "  "; 
         counter-increment: item;
     } 
+
 `
 
 export const GenreDiv = styled.div`
@@ -131,11 +131,15 @@ export const GenreList = styled.ul`
     flex-wrap: wrap;
 `
 export const GenreItem = styled.li`
+    font-size: 1rem;
+    list-style-position: outside;
+    margin: .2rem 2.5rem .2rem 0px;   
+
+`
+export const GenreName = styled.p`
     color: #000;
     font-size: 1rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     text-decoration: none;
-    list-style-position: outside;
-    margin: .2rem 2.5rem .2rem 0px;    
+    margin: 0px;
 `
-

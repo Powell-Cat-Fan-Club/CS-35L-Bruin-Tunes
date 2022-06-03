@@ -14,8 +14,24 @@ import {
 export default function Login() {
   const [showError, setshowError] = useState(false);
   const [users, setUsers] = useState();
-  
+
   useEffect(() => {
+    async function checkedLog() {
+      const response = await fetch(`http://localhost:5000/loggedinuser`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const logStatus = await response.json();
+      
+      if (logStatus) {
+        window.location.replace("/");
+      }
+    }
+    checkedLog();
+
     async function getUsers() {
       const response = await fetch(`http://localhost:5000/login/`);
       if (!response.ok) {

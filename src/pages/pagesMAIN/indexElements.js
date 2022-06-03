@@ -3,16 +3,27 @@ import { NavLink as Link} from "react-router-dom";
 
 export const HomeBackground = styled.div`
     background-image: url("${process.env.public_url}/images/homeBack.jpg");
+    background-size: auto 110vw;
     background-repeat: no-repeat;
     background-size: 100vw auto;
+
+    min-height: 89vh;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
 `
 
 export const TitleContainer = styled.div`
-    height: 30rem;
+    padding: .5rem 0px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 800px) {
+        padding: 4rem 0px;
+    }
 `
     
 
@@ -30,6 +41,7 @@ export const Description = styled.p`
 
 export const LinksContainer = styled.div`
     display: flex;
+    padding: .5rem 0px;
     flex-direction: row;
     padding: 1rem 0;
     @media (max-width: 700px) {
@@ -56,11 +68,9 @@ export const NavLink = styled(Link)`
 	box-shadow: 0px 8px 4px -7px #6B5F4E;  
 	cursor: pointer;
 
-
     &:hover {
-        background-color: #FFE194;
+        background-color: #FFDA6E;
     };
-
 
     @media (max-width: 700px) {
         width: 97%;

@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import Home from './pages/pagesMAIN';
 import About from './pages/pagesABOUT/about';
-import CommentBox from './pages/CommentBox';
+import CommentBox from './pages/pagesCOMMENTS/CommentBox';
 import Charts from './pages/pagesCHARTS/charts';
 import Artists from './pages/pagesARTISTS/artists';
 import ArtistTemplate from './pages/pagesARTISTS/artists-template';
@@ -55,7 +55,7 @@ return (
           element={
             <main style={{ padding: "5rem"}}>
               <Header> Why are you here? There's nothing.</Header>
-              <img style={{display:"none"}} src={"/image/ghostcat.jpg"} alt="oooooo a ghost" />
+              <img style={{display:"none"}} src={"/images/ghostcat.jpg"} alt="oooooo a ghost" />
             </main>
           }
         />

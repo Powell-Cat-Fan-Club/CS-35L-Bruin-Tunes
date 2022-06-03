@@ -99,7 +99,7 @@ const Songs = () => {
         <br/>
         {Content()}
         <br/>
-        <NavLink to={`/artists/${params.artistID}/${params.albumID}`}> Back </NavLink>
+        <NavLink isYellow to={`/artists/${params.artistID}/${params.albumID}`}> Back </NavLink>
       </LeftContent>
     </ContentContainer>
     : 

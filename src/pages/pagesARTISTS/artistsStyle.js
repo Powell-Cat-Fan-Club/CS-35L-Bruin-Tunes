@@ -75,7 +75,7 @@ export const NavLink = styled(Link)`
     align-items: center;
     margin: .5rem 0px; 
 
-    background-color: #55c1ff;
+    background-color: ${props => props.isYellow ? "#EED3AE" : "#B0DBFF"};
     border-radius: 10px;
     border: 1px solid #16425b;
     cursor: pointer;
