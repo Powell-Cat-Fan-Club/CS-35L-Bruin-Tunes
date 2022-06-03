@@ -45,7 +45,7 @@ export const SideTitle = styled.h2`
 export const Username = styled.input `
     color: #000;
     font-size: 1.5rem; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
 
     margin: 1rem 0px;
@@ -61,22 +61,22 @@ export const ChoiceBox = styled.fieldset`
 export const OptionTitle = styled.legend `
     color: #000;
     font-size: 2rem; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
 `
 
 export const OptionChoice = styled.label `
     color: #000;
     font-size: 1.2rem; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
 
     display: block;
 `
 export const SubmitButton = styled.button`
     color: #000;
-    font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-size: 1.5rem; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
 
@@ -110,14 +110,14 @@ export const ListCard = styled(DivContainer)`
 export const ListCreator = styled.h3`
     margin: 0px;
     color: #000;
-    font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-size: 1.8rem; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
 `
 export const ListContent = styled.p`
     margin: 0px;
     color: #000;
-    font-size: x-large; 
-    font-family: Arial, Helvetica, sans-serif;  
+    font-size: 1.3rem; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
 `

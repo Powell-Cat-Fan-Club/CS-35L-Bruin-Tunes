@@ -29,7 +29,7 @@ export const TitleContainer = styled.div`
 
 export const Description = styled.p`
     color: Black;
-    font-size: 20px; /* not set */
+    font-size: 1.3rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* not set */ 
     font-weight: 600;
     text-decoration: none;
@@ -53,7 +53,7 @@ export const LinksContainer = styled.div`
 export const NavLink = styled(Link)`
     color: #000;
     font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif; /* not set */ 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
     text-decoration: none;
     text-align: center;
 

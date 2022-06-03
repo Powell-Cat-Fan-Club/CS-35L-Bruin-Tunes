@@ -33,8 +33,8 @@ export const Header = styled(Title)`
 
 export const ErrorBox = styled.h3`
     color: #a00;
-    font-size: 1rem; /* not set */
-    font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* not set */ 
+    font-size: 1rem; 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
     text-decoration: none;
     text-align: center;
 

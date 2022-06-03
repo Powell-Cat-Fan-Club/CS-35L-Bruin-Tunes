@@ -62,7 +62,7 @@
     
     color: #04a;
     font-size: 1rem;
-    font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* not set */ 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
     text-decoration: none;
 
     display: inline-flex;
@@ -79,7 +79,7 @@
   
   .singleCommentContent p {
     font-size: 1rem;
-    font-family: "Noto Sans", Arial, Helvetica, sans-serif; /* not set */ 
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
     text-decoration: none;
     margin: 0;
   }
