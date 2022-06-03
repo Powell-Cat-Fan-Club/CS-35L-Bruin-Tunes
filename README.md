@@ -8,6 +8,8 @@ BruinTunes will be a web-based application that hosts the links to your favorite
 
 Our motivation for this project is to create a platform for UCLA students to share their music with each other. As music lovers ourselves, we want a platform where anyone can find information about new artists and discover new songs. Spotify is great for listening to music and making playlists. However, there’s no good way to comment on and make lists of your favorite music. Additionally, with YouTube’s choice to remove comments on “Artist - Topic” channels, it’s a lot harder to be social with your music. Music is one way of communicating with other people, and that’s a void BruinTunes will fill. 
 
+URL: https://bruin-tunes.netlify.app/
+
 ## Team Members ##
 
 - Laura Ness (1D)
