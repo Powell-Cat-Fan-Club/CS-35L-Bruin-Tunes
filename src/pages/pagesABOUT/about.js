@@ -38,9 +38,9 @@ const About = () => {
         Our mission as the developers behind BruinTunes is to spread the love of music to Bruins far and wide. 
         Whether that be on the way to class, in YRL Floors 2-5, or just chillaxing in the dorm, 
         we hope that Bruins everywhere will find it easy and convenient to listen to and discuss their favorite music 
-        with other Bruins. "We the team of BruinTunes encourage you to just take a moment from your busy lives as 
+        with other Bruins. We the team of BruinTunes encourage you to just take a moment from your busy lives as 
         college students and relax with our carefully curated selection of music. Sit back, relax, and scroll these 
-        pictures of Powell cat."
+        pictures of Powell cat.
         </WebDescription>
       </DivContainer>
       <DivContainer>

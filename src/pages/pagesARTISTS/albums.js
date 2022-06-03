@@ -32,7 +32,7 @@ const Albums = () => {
           <LeftContent>
             <Title>Album name: {album.name}</Title>
             <Description> Release date: {album.date} </Description>
-            <NavLink to={`/artists/${params.artistID}`}> Back </NavLink>
+            <NavLink isYellow to={`/artists/${params.artistID}`}> Back </NavLink>
           </LeftContent>
 
           <RightContent>

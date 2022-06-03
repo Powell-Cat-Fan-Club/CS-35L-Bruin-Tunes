@@ -42,7 +42,7 @@ export const SearchOutline = styled.div`
 `
 export const SearchBar = styled.input`
     color: #000;
-    font-size: 15px; 
+    font-size: 1rem; 
     font-family: Arial, Helvetica, sans-serif;  
     text-decoration: none;
     
@@ -65,7 +65,7 @@ export const ArtistList = styled.nav`
 
 export const NavLink = styled(Link)`
     color: Black;
-    font-size: x-large; 
+    font-size:  1.5rem; 
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
@@ -75,7 +75,7 @@ export const NavLink = styled(Link)`
     align-items: center;
     margin: .5rem 0px; 
 
-    background-color: #55c1ff;
+    background-color: ${props => props.isYellow ? "#EED3AE" : "#B0DBFF"};
     border-radius: 10px;
     border: 1px solid #16425b;
     cursor: pointer;
@@ -151,7 +151,7 @@ export const Banner = styled.img`
 `
 export const Title = styled.h2`
     color: #000;
-    font-size: 45px;
+    font-size: 3rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: center;
@@ -159,7 +159,7 @@ export const Title = styled.h2`
 `
 export const Description = styled.p`
     color: #000;
-    font-size: normal;
+    font-size: 1rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: ${props => props.align || "center"};
@@ -176,7 +176,7 @@ export const MiniBox = styled(DivContainer)`
 `
 export const LikeButton = styled.button`
     color: #1B262C;
-    font-size: 24px; 
+    font-size: 1.5rem; 
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;
@@ -200,7 +200,7 @@ export const Heart = styled.img`
 
 export const GenreList = styled.ul`
     color: #000;
-    font-size: normal;
+    font-size: 1rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: inherit;

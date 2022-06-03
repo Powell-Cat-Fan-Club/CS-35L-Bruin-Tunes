@@ -14,17 +14,15 @@ import ReactMarkdown from 'react-markdown';
 
 const Comment = props => (
   <div className="singleComment">
-    <img alt="user_image" className="userImage" src={`https://picsum.photos/70?random=${props.id}`} />
-    <div className="textContent">
+    <img alt="user_image" className="userImage" src={`https://cdn.icon-icons.com/icons2/1674/PNG/512/person_110935.png`} />
       <div className="singleCommentContent">
-        <h3>{props.name}</h3>
-        <h4>{props.time.substring(0, 10)}</h4>
-        <p>{props.comment}</p>
+        <h3> 
+          {props.name}
+          <h4> {props.time.substring(0, 10)} </h4>
+        </h3>
+        <p> {props.comment} </p>
         <ReactMarkdown source={props.comment} />
       </div>
-      <div className="singleCommentButtons">
-      </div>
-    </div>
   </div>
 );
 

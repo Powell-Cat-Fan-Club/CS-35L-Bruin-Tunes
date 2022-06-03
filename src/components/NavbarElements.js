@@ -42,7 +42,7 @@ export const NavbarInnerContainer = styled(DivContainer)`
 
 export const NavbarLogo = styled(Link)`
   color: white;
-  font-size: 50px;
+  font-size: 3.2rem;
   font-family: 'Secular One', Arial, Helvetica, sans-serif;
   text-decoration: none;
   text-align: right;
@@ -57,7 +57,7 @@ export const NavbarLogo = styled(Link)`
 
 export const NavbarLink = styled(NavbarLogo)`
   color: white;
-  font-size: medium;
+  font-size: 1rem;
   font-family: 'Noto Sans', Arial, Helvetica, sans-serif; /* not set */
   text-align: center;
 
@@ -69,7 +69,7 @@ export const NavbarLink = styled(NavbarLogo)`
 `;
 
 export const NavbarLinkExtended = styled(NavbarLink)`
-  font-size: x-large;
+  font-size: 1rem;
   display: flex;
   margin: 10px 0;
 `;
@@ -102,3 +102,24 @@ export const NavbarExtendedContainer = styled(NavContainer)`
     display: none;
   }
 `;
+
+export const LoginButton = styled.button`
+    color: #0F4C75;
+    font-size: 1rem;
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
+    text-decoration: none;
+    text-align: center;
+
+    padding: .3rem;
+    align-items: center;
+    margin: .5rem 0px; 
+
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #16425b;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #5C9FCC;
+    }
+`

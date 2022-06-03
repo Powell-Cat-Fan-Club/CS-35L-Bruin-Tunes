@@ -22,6 +22,7 @@ import {
   NavbarInnerContainer,
   NavbarLogo,
   NavbarLink,
+  LoginButton,
   Logo,
   OpenLinksButton,
   NavbarLinkExtended,
@@ -87,7 +88,9 @@ function Navbar() {
           <NavbarLink to="/charts"> Charts </NavbarLink>
           <NavbarLink to="/userlist"> Lists </NavbarLink>
           <NavbarLink to="/about"> About us! </NavbarLink>
-          <NavbarLink to="/login" onClick={logOutOnClick}> {text} </NavbarLink>
+          <NavbarLink to="/login" onClick={logOutOnClick}>
+            <LoginButton> {text} </LoginButton>
+          </NavbarLink>
           <OpenLinksButton
             onClick={() => {
               setExtendNavbar((curr) => !curr);
@@ -106,7 +109,9 @@ function Navbar() {
           <NavbarLinkExtended to="/charts"> Charts </NavbarLinkExtended>
           <NavbarLinkExtended to="/userlist"> Lists </NavbarLinkExtended>
           <NavbarLinkExtended to="/about"> About us! </NavbarLinkExtended>
-          <NavbarLinkExtended to="/login" as="button" onClick={logOutOnClick}> {text} </NavbarLinkExtended>
+          <NavbarLinkExtended to="/login" onClick={logOutOnClick}> 
+            <LoginButton> {text} </LoginButton> 
+          </NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>

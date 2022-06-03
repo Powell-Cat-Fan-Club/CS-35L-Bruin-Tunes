@@ -39,7 +39,7 @@ async function submitComment(e) {
     }
   let user = await response.json();
 
-  if(user != undefined && user.username != "" && newComment.comment != ""){
+  if(user !== undefined && user.username !== "" && newComment.comment !== ""){
     await fetch("http://localhost:5000/comments/add", {
       method: "POST",
       headers: {
@@ -68,7 +68,6 @@ return (
       name="text"
       placeholder="Say something..."
       onChange={(e) => updateComment({comment:e.target.value})}
-
     />
     <button type="submit">Submit</button>
   </form>

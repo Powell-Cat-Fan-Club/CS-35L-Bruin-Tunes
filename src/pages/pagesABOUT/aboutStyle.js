@@ -9,7 +9,7 @@ export const DivContainer = styled(Container)`
 
 export const WebDescription = styled.p`
     color: #000;
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     text-decoration: none;
     text-align: center;
@@ -47,7 +47,7 @@ export const PersonCard = styled.div`
 
 export const PersonName = styled.h4`
     color: #000;
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: "Noto Sans", Arial, Helvetica, sans-serif; 
     font-weight: 1000;
     text-decoration: none;
@@ -58,7 +58,7 @@ export const PersonName = styled.h4`
 
 export const PersonDescription = styled.p`
     color: #000;
-    font-size: 16px; 
+    font-size: 1rem; 
     font-family: "Noto Sans", Arial, Helvetica, sans-serif;  
     text-decoration: none;
     text-align: center;

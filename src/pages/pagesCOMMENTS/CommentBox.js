@@ -3,7 +3,8 @@ import React, {useEffect, useState} from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import './CommentBox.css';
-
+import { Header } from '../../style';
+import { ErrorBox } from '../pagesLOGIN/loginStyle'
 
 
 export default function CommentBox() {
@@ -40,28 +41,33 @@ export default function CommentBox() {
     }
     GetUser();
   }, [user])
+  
+  return (
+    <div className="container">
+      <div className="section1">
+        <Header>{"Comments"}</Header>
 
-    //console.log(comments);  
-
-    return(   user != undefined ?
-      <div className="container">
         <div className="comments">
-          <h2>{"Comments:"}</h2>
           <CommentList data={comments} />
         </div>
+      </div>
+        
+      <div className='section2'>
+        { user != undefined ? 
+          <></>
+        : 
+          <ErrorBox show={true}> 
+            Login in to Comment
+          </ErrorBox>
+        }
         <div className="form">
           <CommentForm />
         </div>
-      </div> : 
-      <div className="container">
-      <div className="comments">
-        <h2>{"Log in to comment!"}</h2>
-        <CommentList data={comments} />
       </div>
-      <div className="form">
-        <CommentForm />
-      </div>
-    </div>
-    )
-  }
+    </div> 
+  )
+}
 
+/*
+        
+*/
