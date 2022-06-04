@@ -10,6 +10,8 @@ Our motivation for this project is to create a platform for UCLA students to sha
 
 URL: https://bruin-tunes.netlify.app/
 
+Presentation: https://docs.google.com/presentation/d/121z6iYHIRhVZNSSGnWJe31WjPpr1TFVn1kajY_EQfko/edit?usp=sharing
+
 ## Team Members ##
 
 - Laura Ness (1D)
